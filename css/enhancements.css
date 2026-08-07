@@ -64,6 +64,7 @@
 
 @media(max-width:900px){
   .site-nav{margin-left:0}
+  .site-nav>.nav-dropdown>.dropdown-toggle,.site-nav>a{min-height:55px;padding:15px 20px;font-size:.86rem;font-weight:700;line-height:1.4}
   .dropdown-toggle{justify-content:space-between;align-items:center}
   .site-nav .nav-dropdown>.dropdown-menu{display:none}
   .site-nav .nav-dropdown.open>.dropdown-menu{display:block}
