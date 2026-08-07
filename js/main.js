@@ -2,6 +2,12 @@ const navButton = document.querySelector('.nav-toggle');
 const navigation = document.querySelector('.site-nav');
 const navigationBar = document.querySelector('.nav-wrap');
 const identityRow = document.querySelector('.identity-row');
+const insidePages = location.pathname.includes('/pages/');
+const assetRoot = insidePages ? '../' : '';
+const enhancementStyles = document.createElement('link');
+enhancementStyles.rel = 'stylesheet';
+enhancementStyles.href = `${assetRoot}css/enhancements.css`;
+document.head.append(enhancementStyles);
 
 if (identityRow && navigationBar) {
   const headerBrand = identityRow.querySelector('.brand');
@@ -13,20 +19,19 @@ document.querySelectorAll('.search').forEach((search) => search.remove());
 document.querySelectorAll('.nav-enquiry').forEach((enquiry) => enquiry.remove());
 
 if (navigation) {
-  const insidePages = location.pathname.includes('/pages/');
   const root = insidePages ? '../' : '';
   const currentPage = location.pathname.split('/').pop() || 'index.html';
   const aboutActive = ['pac-cooperative.html', 'prout-philosophy.html', 'our-members.html'].includes(currentPage);
   navigation.innerHTML = `
     <div class="nav-dropdown${aboutActive ? ' active' : ''}">
-      <button class="dropdown-toggle" type="button" aria-expanded="false">About <span aria-hidden="true">⌄</span></button>
+      <button class="dropdown-toggle" type="button" aria-expanded="false">About <span class="menu-chevron" aria-hidden="true"></span></button>
       <div class="dropdown-menu">
         <a class="${currentPage === 'pac-cooperative.html' ? 'active' : ''}" href="${root}pages/pac-cooperative.html">PAC Cooperative</a>
         <a class="${currentPage === 'prout-philosophy.html' ? 'active' : ''}" href="${root}pages/prout-philosophy.html">PROUT Philosophy</a>
         <a class="${currentPage === 'our-members.html' ? 'active' : ''}" href="${root}pages/our-members.html">Our Members</a>
       </div>
     </div>
-    <a href="${root}index.html#sampark">Contact</a>`;
+    <a href="${root}index.html#sampark">Contact Us</a>`;
 }
 
 if (navButton && navigation) {
@@ -46,6 +51,70 @@ if (navButton && navigation) {
   });
 }
 
+const pageHeroImages = {
+  'pac-cooperative.html': '../media/pages/pac-cooperative-hero.png',
+  'prout-philosophy.html': '../media/pages/prout-philosophy-hero.png',
+  'our-members.html': '../media/pages/our-members-hero.png'
+};
+const currentFile = location.pathname.split('/').pop() || 'index.html';
+const pageBanner = document.querySelector('.page-banner');
+if (pageBanner && pageHeroImages[currentFile]) {
+  pageBanner.classList.add('generated-hero');
+  pageBanner.style.backgroundImage = `url('${pageHeroImages[currentFile]}')`;
+}
+
+const productCarousel = document.querySelector('.product-carousel');
+if (productCarousel) {
+  const products = [
+    {name:'Mustard Oil',source:'Freshly produced oil sourced from Muradnagar Master Unit.',bg:'mustard-oil-bg.png',fg:'mustard-oil-fg-v2.png',quantities:['500 ml','1 litre','2 litre','5 litre','10 litre']},
+    {name:'Wheat',source:'Freshly produced atta sourced from Muradnagar Master Unit and packed using our in-house packaging machine.',bg:'wheat-bg.png',fg:'wheat-fg.png',quantities:['5 kg','10 kg']},
+    {name:'Black Wheat',source:'Freshly produced black wheat atta sourced from Muradnagar Master Unit and packed using our in-house packaging machine.',bg:'black-wheat-bg.png',fg:'black-wheat-fg.png',quantities:['5 kg','10 kg']},
+    {name:'Turmeric Powder',source:'Naturally vibrant turmeric, carefully cleaned, ground and packed to preserve its colour and earthy aroma.',bg:'turmeric-bg.png',fg:'turmeric-fg.png',quantities:['100 g','200 g']},
+    {name:'Heeng',source:'Aromatic asafoetida packed in a convenient small pouch to bring depth and character to everyday cooking.',bg:'heeng-bg.png',fg:'heeng-fg.png',quantities:['50 g']},
+    {name:'White Salt',source:'Clean, fine white salt packed for dependable everyday use in home and commercial kitchens.',bg:'white-salt-bg.png',fg:'white-salt-fg.png',quantities:['500 g','1 kg']},
+    {name:'Dhaniya Powder',source:'Fresh coriander powder with a naturally warm aroma, prepared in small batches for better flavour.',bg:'dhaniya-bg.png',fg:'dhaniya-fg.png',quantities:['100 g','200 g']},
+    {name:'Gur',source:'Traditional golden jaggery with a rich sugarcane flavour, conveniently packed for everyday use.',bg:'gur-bg.png',fg:'gur-fg.png',quantities:['500 g','1 kg']}
+  ];
+  const track = productCarousel.querySelector('.carousel-track');
+  const dots = productCarousel.querySelector('.carousel-dots');
+  const count = productCarousel.querySelector('.carousel-count');
+  products.forEach((product, index) => {
+    const enquiry = encodeURIComponent(`Hello PROUT Agro Commodity, I would like to enquire about ${product.name}. Please share availability and ordering details.`);
+    const slide = document.createElement('article');
+    slide.className = `product-slide${index === 0 ? ' active' : ''}`;
+    slide.setAttribute('aria-hidden', String(index !== 0));
+    slide.innerHTML = `<img class="slide-background" src="media/products/${product.bg}" alt="" loading="${index === 0 ? 'eager' : 'lazy'}"><div class="slide-overlay"></div><div class="container slide-layout"><div class="slide-copy"><p class="slide-eyebrow">Farm fresh • PAC branded</p><h1>${product.name}</h1><p>${product.source}</p><span class="availability-label">Available quantities</span><div class="quantity-list">${product.quantities.map(q=>`<span>${q}<b>₹100</b></span>`).join('')}</div><a class="whatsapp-button" href="https://api.whatsapp.com/send?text=${enquiry}" target="_blank" rel="noopener">Enquire on WhatsApp</a></div><img class="slide-product" src="media/products/${product.fg}" alt="PAC branded ${product.name} packaging" loading="${index === 0 ? 'eager' : 'lazy'}"></div>`;
+    track.append(slide);
+    const dot = document.createElement('button');
+    dot.type = 'button';
+    dot.className = index === 0 ? 'active' : '';
+    dot.setAttribute('aria-label', `Show ${product.name}`);
+    dots.append(dot);
+  });
+  const slides = [...track.querySelectorAll('.product-slide')];
+  const dotButtons = [...dots.querySelectorAll('button')];
+  let activeSlide = 0;
+  let carouselTimer;
+  const showSlide = (next) => {
+    activeSlide = (next + slides.length) % slides.length;
+    slides.forEach((slide,index)=>{const active=index===activeSlide;slide.classList.toggle('active',active);slide.setAttribute('aria-hidden',String(!active));});
+    dotButtons.forEach((dot,index)=>dot.classList.toggle('active',index===activeSlide));
+    count.textContent = `${String(activeSlide + 1).padStart(2,'0')} / ${String(slides.length).padStart(2,'0')}`;
+  };
+  const startCarousel = () => { if (!matchMedia('(prefers-reduced-motion: reduce)').matches) carouselTimer = setInterval(()=>showSlide(activeSlide + 1),6500); };
+  const restartCarousel = () => { clearInterval(carouselTimer); startCarousel(); };
+  productCarousel.querySelector('.carousel-prev').addEventListener('click',()=>{showSlide(activeSlide-1);restartCarousel();});
+  productCarousel.querySelector('.carousel-next').addEventListener('click',()=>{showSlide(activeSlide+1);restartCarousel();});
+  dotButtons.forEach((dot,index)=>dot.addEventListener('click',()=>{showSlide(index);restartCarousel();}));
+  productCarousel.addEventListener('mouseenter',()=>clearInterval(carouselTimer));
+  productCarousel.addEventListener('mouseleave',startCarousel);
+  productCarousel.addEventListener('focusin',()=>clearInterval(carouselTimer));
+  productCarousel.addEventListener('focusout',startCarousel);
+  productCarousel.addEventListener('keydown',(event)=>{if(event.key==='ArrowLeft')showSlide(activeSlide-1);if(event.key==='ArrowRight')showSlide(activeSlide+1);});
+  showSlide(0);
+  startCarousel();
+}
+
 document.querySelectorAll('[data-year]').forEach((element) => { element.textContent = new Date().getFullYear(); });
 
 const sizeMap = { minus: '15px', reset: '16px', plus: '18px' };
@@ -59,6 +128,15 @@ document.querySelectorAll('.search').forEach((form) => form.addEventListener('su
 }));
 
 const english = {
+  'संपर्क करें':'Contact Us','खेत से ताज़ा • पीएसी ब्रांडेड':'Farm fresh • PAC branded','उपलब्ध मात्राएँ':'Available quantities','व्हाट्सऐप पर पूछताछ करें':'Enquire on WhatsApp',
+  'सरसों तेल':'Mustard Oil','मुरादनगर मास्टर यूनिट से प्राप्त ताज़ा उत्पादित तेल।':'Freshly produced oil sourced from Muradnagar Master Unit.',
+  'गेहूँ':'Wheat','मुरादनगर मास्टर यूनिट से प्राप्त ताज़ा आटा, हमारी आंतरिक पैकेजिंग मशीन से पैक किया गया।':'Freshly produced atta sourced from Muradnagar Master Unit and packed using our in-house packaging machine.',
+  'काला गेहूँ':'Black Wheat','मुरादनगर मास्टर यूनिट से प्राप्त ताज़ा काले गेहूँ का आटा, हमारी आंतरिक पैकेजिंग मशीन से पैक किया गया।':'Freshly produced black wheat atta sourced from Muradnagar Master Unit and packed using our in-house packaging machine.',
+  'हल्दी पाउडर':'Turmeric Powder','प्राकृतिक रूप से चमकीली हल्दी, जिसका रंग और मिट्टी जैसी सुगंध बनाए रखने के लिए सावधानी से सफाई, पिसाई और पैकिंग की गई है।':'Naturally vibrant turmeric, carefully cleaned, ground and packed to preserve its colour and earthy aroma.',
+  'हींग':'Heeng','सुगंधित हींग, रोज़मर्रा के भोजन में गहराई और स्वाद लाने के लिए सुविधाजनक छोटे पैकेट में।':'Aromatic asafoetida packed in a convenient small pouch to bring depth and character to everyday cooking.',
+  'सफेद नमक':'White Salt','घर और व्यावसायिक रसोई में भरोसेमंद रोज़मर्रा के उपयोग के लिए साफ़, महीन सफेद नमक।':'Clean, fine white salt packed for dependable everyday use in home and commercial kitchens.',
+  'धनिया पाउडर':'Dhaniya Powder','प्राकृतिक गर्म सुगंध वाला ताज़ा धनिया पाउडर, बेहतर स्वाद के लिए छोटी खेप में तैयार।':'Fresh coriander powder with a naturally warm aroma, prepared in small batches for better flavour.',
+  'गुड़':'Gur','गन्ने के भरपूर स्वाद वाला पारंपरिक सुनहरा गुड़, रोज़मर्रा के उपयोग के लिए सुविधाजनक पैकिंग में।':'Traditional golden jaggery with a rich sugarcane flavour, conveniently packed for everyday use.',
   'सूक्ष्म, लघु एवं मध्यम उद्यम पहल':'Micro, Small & Medium Enterprise Initiative','भाषा चयन':'Language selection','परिचय / पीएसी सहकारिता':'About / PAC Cooperative','परिचय / प्राउट दर्शन':'About / PROUT Philosophy','परिचय / हमारे सदस्य':'About / Our Members',
   'पीएसी सहकारिता':'PAC Cooperative','प्राउट दर्शन':'PROUT Philosophy','हमारे सदस्य':'Our Members','परिचय':'About',
   'पीएसी सहकारिता क्या है':'What is the PAC Cooperative','साझे स्वामित्व से साझा समृद्धि':'Shared ownership, shared prosperity','पीएसी सहकारिता किसानों और उत्पादकों को संसाधन, जिम्मेदारी और उपलब्धियाँ साझा करने के लिए एक मंच प्रदान करती है।':'The PAC Cooperative gives farmers and producers a platform to share resources, responsibility and achievement.','सहकारिता का उद्देश्य':'Purpose of the Cooperative','उत्पादक को निर्णय और मूल्य-श्रृंखला के केंद्र में रखना।':'To keep the producer at the centre of decisions and the value chain.','साझे संसाधन':'Shared Resources','ज्ञान, साधन और अवसरों का जिम्मेदार उपयोग।':'Responsible use of knowledge, tools and opportunity.','निष्पक्ष भागीदारी':'Fair Participation','हर सदस्य की आवाज़ और योगदान का सम्मान।':'Respect for every member’s voice and contribution.','स्थानीय प्रगति':'Local Progress','आर्थिक लाभ को समुदाय के भीतर मजबूत बनाना।':'Strengthening economic value within the community.',
