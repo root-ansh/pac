@@ -76,10 +76,11 @@
 @media(max-width:600px){
   .product-carousel{height:730px}
   .slide-layout{padding-top:25px;padding-bottom:60px}
+  .slide-overlay{background:linear-gradient(180deg,rgba(7,25,18,.04) 0%,rgba(7,25,18,.16) 35%,rgba(7,25,18,.68) 58%,rgba(7,25,18,.86) 100%)}
   .slide-product{top:35px;right:4%;width:70%;height:300px}
   .slide-copy{max-width:100%}
-  .slide-copy h1{font-size:2.8rem}
-  .slide-copy>p:not(.slide-eyebrow){font-size:.82rem;margin:12px 0}
+  .slide-copy h1{font-size:2.8rem;text-shadow:0 2px 12px rgba(0,0,0,.45)}
+  .slide-copy>p:not(.slide-eyebrow){font-size:.82rem;margin:12px 0;text-shadow:0 1px 8px rgba(0,0,0,.55)}
   .quantity-list{gap:6px;margin-bottom:16px}
   .quantity-list span{padding:5px 7px;font-size:.67rem}
   .carousel-control{top:38%;width:34px;height:46px}
