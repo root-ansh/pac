@@ -64,7 +64,11 @@
 
 @media(max-width:900px){
   .site-nav{margin-left:0}
-  .dropdown-toggle{justify-content:space-between}
+  .dropdown-toggle{justify-content:space-between;align-items:center}
+  .site-nav .nav-dropdown>.dropdown-menu{display:none}
+  .site-nav .nav-dropdown.open>.dropdown-menu{display:block}
+  .nav-dropdown:not(.open) .menu-chevron{transform:rotate(45deg) translateY(-2px)}
+  .nav-dropdown.open .menu-chevron{transform:rotate(225deg) translate(-1px,-1px)}
   .product-carousel{height:760px}
   .slide-layout{grid-template-columns:1fr;gap:5px;padding-top:55px;padding-bottom:45px}
   .slide-copy{align-self:end;max-width:90%}
