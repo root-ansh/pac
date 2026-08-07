@@ -1,0 +1,12 @@
+{
+  "products": [
+    {"id": "mustard-oil", "name": "Mustard Oil", "image": "media/products/mustard-oil-fg-v2.png", "quantities": [{"weight": "500 ml", "price": "₹100"}, {"weight": "1 litre", "price": "₹100"}, {"weight": "2 litre", "price": "₹100"}, {"weight": "5 litre", "price": "₹100"}, {"weight": "10 litre", "price": "₹100"}]},
+    {"id": "wheat", "name": "Wheat", "image": "media/products/wheat-fg.png", "quantities": [{"weight": "5 kg", "price": "₹100"}, {"weight": "10 kg", "price": "₹100"}]},
+    {"id": "black-wheat", "name": "Black Wheat", "image": "media/products/black-wheat-fg.png", "quantities": [{"weight": "5 kg", "price": "₹100"}, {"weight": "10 kg", "price": "₹100"}]},
+    {"id": "turmeric-powder", "name": "Turmeric Powder", "image": "media/products/turmeric-fg.png", "quantities": [{"weight": "100 g", "price": "₹100"}, {"weight": "200 g", "price": "₹100"}]},
+    {"id": "heeng", "name": "Heeng", "image": "media/products/heeng-fg.png", "quantities": [{"weight": "50 g", "price": "₹100"}]},
+    {"id": "white-salt", "name": "White Salt", "image": "media/products/white-salt-fg.png", "quantities": [{"weight": "500 g", "price": "₹100"}, {"weight": "1 kg", "price": "₹100"}]},
+    {"id": "dhaniya-powder", "name": "Dhaniya Powder", "image": "media/products/dhaniya-fg.png", "quantities": [{"weight": "100 g", "price": "₹100"}, {"weight": "200 g", "price": "₹100"}]},
+    {"id": "gur", "name": "Gur", "image": "media/products/gur-fg.png", "quantities": [{"weight": "500 g", "price": "₹100"}, {"weight": "1 kg", "price": "₹100"}]}
+  ]
+}

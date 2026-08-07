@@ -1,0 +1,69 @@
+{
+  "autoplayMs": 6500,
+  "products": [
+    {
+      "id": "mustard-oil",
+      "title": "Mustard Oil",
+      "subtitle": "Freshly produced oil sourced from Muradnagar Master Unit.",
+      "quantities": [{"weight": "500 ml", "price": "₹100"}, {"weight": "1 litre", "price": "₹100"}, {"weight": "2 litre", "price": "₹100"}, {"weight": "5 litre", "price": "₹100"}, {"weight": "10 litre", "price": "₹100"}],
+      "foregroundImage": "media/products/mustard-oil-fg-v2.png",
+      "backgroundImage": "media/products/mustard-oil-bg.png"
+    },
+    {
+      "id": "wheat",
+      "title": "Wheat",
+      "subtitle": "Freshly produced atta sourced from Muradnagar Master Unit and packed using our in-house packaging machine.",
+      "quantities": [{"weight": "5 kg", "price": "₹100"}, {"weight": "10 kg", "price": "₹100"}],
+      "foregroundImage": "media/products/wheat-fg.png",
+      "backgroundImage": "media/products/wheat-bg.png"
+    },
+    {
+      "id": "black-wheat",
+      "title": "Black Wheat",
+      "subtitle": "Freshly produced black wheat atta sourced from Muradnagar Master Unit and packed using our in-house packaging machine.",
+      "quantities": [{"weight": "5 kg", "price": "₹100"}, {"weight": "10 kg", "price": "₹100"}],
+      "foregroundImage": "media/products/black-wheat-fg.png",
+      "backgroundImage": "media/products/black-wheat-bg.png"
+    },
+    {
+      "id": "turmeric-powder",
+      "title": "Turmeric Powder",
+      "subtitle": "Naturally vibrant turmeric, carefully cleaned, ground and packed to preserve its colour and earthy aroma.",
+      "quantities": [{"weight": "100 g", "price": "₹100"}, {"weight": "200 g", "price": "₹100"}],
+      "foregroundImage": "media/products/turmeric-fg.png",
+      "backgroundImage": "media/products/turmeric-bg.png"
+    },
+    {
+      "id": "heeng",
+      "title": "Heeng",
+      "subtitle": "Aromatic asafoetida packed in a convenient small pouch to bring depth and character to everyday cooking.",
+      "quantities": [{"weight": "50 g", "price": "₹100"}],
+      "foregroundImage": "media/products/heeng-fg.png",
+      "backgroundImage": "media/products/heeng-bg.png"
+    },
+    {
+      "id": "white-salt",
+      "title": "White Salt",
+      "subtitle": "Clean, fine white salt packed for dependable everyday use in home and commercial kitchens.",
+      "quantities": [{"weight": "500 g", "price": "₹100"}, {"weight": "1 kg", "price": "₹100"}],
+      "foregroundImage": "media/products/white-salt-fg.png",
+      "backgroundImage": "media/products/white-salt-bg.png"
+    },
+    {
+      "id": "dhaniya-powder",
+      "title": "Dhaniya Powder",
+      "subtitle": "Fresh coriander powder with a naturally warm aroma, prepared in small batches for better flavour.",
+      "quantities": [{"weight": "100 g", "price": "₹100"}, {"weight": "200 g", "price": "₹100"}],
+      "foregroundImage": "media/products/dhaniya-fg.png",
+      "backgroundImage": "media/products/dhaniya-bg.png"
+    },
+    {
+      "id": "gur",
+      "title": "Gur",
+      "subtitle": "Traditional golden jaggery with a rich sugarcane flavour, conveniently packed for everyday use.",
+      "quantities": [{"weight": "500 g", "price": "₹100"}, {"weight": "1 kg", "price": "₹100"}],
+      "foregroundImage": "media/products/gur-fg.png",
+      "backgroundImage": "media/products/gur-bg.png"
+    }
+  ]
+}
