@@ -78,7 +78,7 @@ if (productCarousel) {
         const slide = document.createElement('article');
         slide.className = `product-slide${index === 0 ? ' active' : ''}`;
         slide.setAttribute('aria-hidden', String(index !== 0));
-        slide.innerHTML = `<img class="slide-background" src="${product.backgroundImage}" alt="" loading="${index === 0 ? 'eager' : 'lazy'}"><div class="slide-overlay"></div><div class="container slide-layout"><div class="slide-copy"><p class="slide-eyebrow">Farm fresh • PAC branded</p><h1>${product.title}</h1><p>${product.subtitle}</p><span class="availability-label">Available quantities</span><div class="quantity-list">${product.quantities.map(({weight,price})=>`<span>${weight}<b>${price}</b></span>`).join('')}</div><a class="whatsapp-button" href="https://api.whatsapp.com/send?text=${enquiry}" target="_blank" rel="noopener">Enquire on WhatsApp</a></div><img class="slide-product" src="${product.foregroundImage}" alt="PAC branded ${product.title} packaging" loading="${index === 0 ? 'eager' : 'lazy'}"></div>`;
+        slide.innerHTML = `<img class="slide-background" src="${product.backgroundImage}" alt="" loading="${index === 0 ? 'eager' : 'lazy'}"><div class="slide-overlay"></div><div class="container slide-layout"><div class="slide-copy"><p class="slide-eyebrow">Farm fresh • PAC branded</p><h1>${product.title}</h1><p>${product.subtitle}</p><span class="availability-label">Available quantities</span><div class="quantity-list">${product.quantities.map(({weight,price})=>`<span>${weight}<b>${price}</b></span>`).join('')}</div><a class="whatsapp-button" href="https://api.whatsapp.com/send?text=${enquiry}" target="_blank" rel="noopener"><img src="media/whatsapp.svg" alt="" aria-hidden="true">Enquire on WhatsApp</a></div><img class="slide-product" src="${product.foregroundImage}" alt="PAC branded ${product.title} packaging" loading="${index === 0 ? 'eager' : 'lazy'}"></div>`;
         track.append(slide);
         const dot = document.createElement('button');
         dot.type = 'button';
@@ -106,7 +106,8 @@ if (productCarousel) {
         if (!userPaused && !matchMedia('(prefers-reduced-motion: reduce)').matches) carouselTimer = setInterval(()=>showSlide(activeSlide + 1), autoplayMs);
       };
       const updatePauseButton = () => {
-        const label = userPaused ? 'Play carousel' : 'Pause carousel';
+        const useHindi = document.documentElement.lang === 'hi';
+        const label = userPaused ? (useHindi ? 'कैरोसेल चलाएँ' : 'Play carousel') : (useHindi ? 'कैरोसेल रोकें' : 'Pause carousel');
         pauseButton.setAttribute('aria-label', label);
         pauseButton.setAttribute('aria-pressed', String(userPaused));
         pauseIcon.textContent = userPaused ? '▶' : 'Ⅱ';
@@ -121,6 +122,7 @@ if (productCarousel) {
         userPaused ? stopCarousel() : startCarousel();
         updatePauseButton();
       });
+      document.addEventListener('proutlanguagechange', updatePauseButton);
       productCarousel.addEventListener('mouseenter', stopCarousel);
       productCarousel.addEventListener('mouseleave', startCarousel);
       productCarousel.addEventListener('focusin', stopCarousel);
@@ -143,7 +145,7 @@ if (productsGrid) {
         const enquiry = encodeURIComponent(`Hello PROUT Agro Commodity, I would like to enquire about ${product.name}. Please share availability and ordering details.`);
         const card = document.createElement('article');
         card.className = 'product-card';
-        card.innerHTML = `<div class="product-card-image"><img src="${product.image}" alt="PAC branded ${product.name} packaging" loading="lazy"></div><div class="product-card-body"><h3>${product.name}</h3><span class="product-options-label">Available options</span><div class="product-card-quantities">${product.quantities.map(({weight,price})=>`<span><b>${weight}</b><small>${price}</small></span>`).join('')}</div><a class="product-enquire" href="https://api.whatsapp.com/send?text=${enquiry}" target="_blank" rel="noopener">Enquire about product</a></div>`;
+        card.innerHTML = `<div class="product-card-image"><img src="${product.image}" alt="PAC branded ${product.name} packaging" loading="lazy"></div><div class="product-card-body"><h3>${product.name}</h3><span class="product-options-label">Available options</span><div class="product-card-quantities">${product.quantities.map(({weight,price})=>`<span><b>${weight}</b><small>${price}</small></span>`).join('')}</div><a class="product-enquire" href="https://api.whatsapp.com/send?text=${enquiry}" target="_blank" rel="noopener"><span class="enquire-icon" aria-hidden="true"><img class="enquire-icon-default" src="media/whatsapp.svg" alt=""><img class="enquire-icon-hover" src="media/whatsapp_black.svg" alt=""></span>Enquire about product</a></div>`;
         productsGrid.append(card);
       });
       setLanguage(sessionStorage.getItem('prout-language') || 'en');
@@ -238,6 +240,7 @@ function setLanguage(language) {
   document.title = pageTitles[fileName]?.[useEnglish ? 0 : 1] || (useEnglish ? 'PROUT Agro Commodity | Farm-Grown Essentials' : 'PROUT Agro Commodity');
   document.querySelectorAll('[data-language]').forEach((button) => button.classList.toggle('active', button.dataset.language === language));
   sessionStorage.setItem('prout-language', language);
+  document.dispatchEvent(new CustomEvent('proutlanguagechange'));
 }
 
 document.querySelectorAll('[data-language]').forEach((button) => button.addEventListener('click', () => setLanguage(button.dataset.language)));

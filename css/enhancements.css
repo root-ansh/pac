@@ -19,7 +19,7 @@
 .quantity-list span{display:flex;gap:8px;align-items:center;padding:7px 10px;border:1px solid rgba(255,255,255,.25);background:rgba(255,255,255,.1);font-size:.75rem;border-radius:2px}
 .quantity-list b{color:#ffd27e}
 .whatsapp-button{display:inline-flex;align-items:center;gap:9px;background:#25d366;color:#082e19;padding:13px 20px;font-weight:800;font-size:.82rem;border-radius:3px}
-.whatsapp-button:before{content:"●";color:white;font-size:1rem}
+.whatsapp-button img{width:22px;height:22px;object-fit:contain}
 .slide-product{width:100%;height:500px;object-fit:contain;filter:drop-shadow(0 22px 24px rgba(0,0,0,.35));align-self:end}
 .carousel-control{position:absolute;z-index:4;top:50%;width:44px;height:56px;transform:translateY(-50%);border:0;background:rgba(0,0,0,.4);color:white;font-size:1.65rem;cursor:pointer}
 .carousel-control:hover,.carousel-control:focus-visible{background:var(--saffron)}
@@ -50,8 +50,13 @@
 .product-card-quantities{display:flex;flex-wrap:wrap;gap:7px;margin:8px 0 20px}
 .product-card-quantities span{display:flex;align-items:center;gap:6px;padding:6px 8px;background:#f5f2e9;border:1px solid #e2ded2;font-size:.72rem}
 .product-card-quantities small{font-size:.68rem;font-weight:800;color:#9a581f}
-.product-enquire{display:block;margin-top:auto;padding:11px 14px;background:var(--green);color:white;text-align:center;font-size:.76rem;font-weight:800;letter-spacing:.02em}
+.product-enquire{display:flex;align-items:center;justify-content:center;gap:8px;margin-top:auto;padding:11px 14px;background:var(--green);color:white;text-align:center;font-size:.76rem;font-weight:800;letter-spacing:.02em}
+.enquire-icon{position:relative;display:block;width:20px;height:20px;flex:0 0 20px}
+.enquire-icon img{position:absolute;inset:0;width:20px;height:20px;object-fit:contain;transition:opacity .2s ease}
+.enquire-icon-hover{opacity:0}
 .product-enquire:hover,.product-enquire:focus-visible{background:var(--saffron);color:#172319}
+.product-enquire:hover .enquire-icon-default,.product-enquire:focus-visible .enquire-icon-default{opacity:0}
+.product-enquire:hover .enquire-icon-hover,.product-enquire:focus-visible .enquire-icon-hover{opacity:1}
 
 .page-banner.generated-hero{min-height:360px;display:flex;align-items:center;background-position:center;background-size:cover;position:relative;isolation:isolate}
 .page-banner.generated-hero:before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(7,37,26,.95),rgba(7,37,26,.62) 48%,rgba(7,37,26,.06));z-index:-1}
