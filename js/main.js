@@ -10,6 +10,24 @@ if (identityRow && navigationBar) {
 }
 
 document.querySelectorAll('.search').forEach((search) => search.remove());
+document.querySelectorAll('.nav-enquiry').forEach((enquiry) => enquiry.remove());
+
+if (navigation) {
+  const insidePages = location.pathname.includes('/pages/');
+  const root = insidePages ? '../' : '';
+  const currentPage = location.pathname.split('/').pop() || 'index.html';
+  const aboutActive = ['pac-cooperative.html', 'prout-philosophy.html', 'our-members.html'].includes(currentPage);
+  navigation.innerHTML = `
+    <div class="nav-dropdown${aboutActive ? ' active' : ''}">
+      <button class="dropdown-toggle" type="button" aria-expanded="false">About <span aria-hidden="true">⌄</span></button>
+      <div class="dropdown-menu">
+        <a class="${currentPage === 'pac-cooperative.html' ? 'active' : ''}" href="${root}pages/pac-cooperative.html">PAC Cooperative</a>
+        <a class="${currentPage === 'prout-philosophy.html' ? 'active' : ''}" href="${root}pages/prout-philosophy.html">PROUT Philosophy</a>
+        <a class="${currentPage === 'our-members.html' ? 'active' : ''}" href="${root}pages/our-members.html">Our Members</a>
+      </div>
+    </div>
+    <a href="${root}index.html#sampark">Contact</a>`;
+}
 
 if (navButton && navigation) {
   navButton.addEventListener('click', () => {
@@ -20,6 +38,12 @@ if (navButton && navigation) {
     navigation.classList.remove('open');
     navButton.setAttribute('aria-expanded', 'false');
   }));
+  const dropdownToggle = navigation.querySelector('.dropdown-toggle');
+  if (dropdownToggle) dropdownToggle.addEventListener('click', () => {
+    const dropdown = dropdownToggle.closest('.nav-dropdown');
+    const isOpen = dropdown.classList.toggle('open');
+    dropdownToggle.setAttribute('aria-expanded', String(isOpen));
+  });
 }
 
 document.querySelectorAll('[data-year]').forEach((element) => { element.textContent = new Date().getFullYear(); });
@@ -35,6 +59,14 @@ document.querySelectorAll('.search').forEach((form) => form.addEventListener('su
 }));
 
 const english = {
+  'सूक्ष्म, लघु एवं मध्यम उद्यम पहल':'Micro, Small & Medium Enterprise Initiative','भाषा चयन':'Language selection','परिचय / पीएसी सहकारिता':'About / PAC Cooperative','परिचय / प्राउट दर्शन':'About / PROUT Philosophy','परिचय / हमारे सदस्य':'About / Our Members',
+  'पीएसी सहकारिता':'PAC Cooperative','प्राउट दर्शन':'PROUT Philosophy','हमारे सदस्य':'Our Members','परिचय':'About',
+  'पीएसी सहकारिता क्या है':'What is the PAC Cooperative','साझे स्वामित्व से साझा समृद्धि':'Shared ownership, shared prosperity','पीएसी सहकारिता किसानों और उत्पादकों को संसाधन, जिम्मेदारी और उपलब्धियाँ साझा करने के लिए एक मंच प्रदान करती है।':'The PAC Cooperative gives farmers and producers a platform to share resources, responsibility and achievement.','सहकारिता का उद्देश्य':'Purpose of the Cooperative','उत्पादक को निर्णय और मूल्य-श्रृंखला के केंद्र में रखना।':'To keep the producer at the centre of decisions and the value chain.','साझे संसाधन':'Shared Resources','ज्ञान, साधन और अवसरों का जिम्मेदार उपयोग।':'Responsible use of knowledge, tools and opportunity.','निष्पक्ष भागीदारी':'Fair Participation','हर सदस्य की आवाज़ और योगदान का सम्मान।':'Respect for every member’s voice and contribution.','स्थानीय प्रगति':'Local Progress','आर्थिक लाभ को समुदाय के भीतर मजबूत बनाना।':'Strengthening economic value within the community.',
+  'प्राउट दर्शन क्या है':'What is PROUT Philosophy','प्रगति, उपयोग और संतुलन का मानवीय दृष्टिकोण':'A human-centred approach to progress, utilisation and balance','प्राउट एक सामाजिक-आर्थिक दर्शन है जो उपलब्ध संसाधनों के विवेकपूर्ण उपयोग, स्थानीय आत्मनिर्भरता और सभी के कल्याण पर बल देता है।':'PROUT is a socio-economic philosophy that emphasises the rational use of available resources, local self-reliance and welfare for all.','प्रगतिशील उपयोग':'Progressive Utilisation','भौतिक, मानवीय और प्राकृतिक संसाधनों का अधिकतम तथा संतुलित उपयोग।':'Maximum and balanced use of material, human and natural resources.','आर्थिक लोकतंत्र':'Economic Democracy','स्थानीय लोगों की स्थानीय अर्थव्यवस्था में सक्रिय भागीदारी।':'Active participation of local people in their local economy.','संतुलित विकास':'Balanced Development','व्यक्ति, समाज और प्रकृति की आवश्यकताओं के बीच सामंजस्य।':'Harmony between the needs of individuals, society and nature.',
+  'हमारे लोग, हमारी शक्ति':'Our people, our strength','PROUT Agro Commodity की दिशा और गुणवत्ता उसके सदस्यों के साझा अनुभव, श्रम और प्रतिबद्धता से बनती है।':'PROUT Agro Commodity is shaped by the shared experience, work and commitment of its members.','उत्पादक सदस्य':'Producer Members','खेती, फसल प्रबंधन और प्राथमिक तैयारी से जुड़े सदस्य।':'Members involved in cultivation, crop management and primary preparation.','प्रसंस्करण सदस्य':'Processing Members','सफाई, छँटाई, पेराई और गुणवत्ता देखरेख में योगदान देने वाले सदस्य।':'Members contributing to cleaning, sorting, pressing and quality oversight.','समुदाय सहयोगी':'Community Partners','आपूर्ति, स्थानीय संपर्क और सहकारी विकास को समर्थन देने वाले सहयोगी।':'Partners supporting supply, local connections and cooperative development.','सदस्य विवरण शीघ्र जोड़े जाएँगे।':'Member profiles will be added soon.',
+  'PROUT Agro Commodity एक किसान-स्वामित्व वाली सहकारी पहल है। हम संसाधन, ज्ञान और अवसर साझा करके अच्छी उपज उगाते हैं और हर परिवार तक ईमानदार खाद्य सामग्री पहुँचाते हैं।':'PROUT Agro Commodity is a farmer-owned initiative. We share resources, knowledge and opportunity to grow quality produce and bring honest food to every family.',
+  'PROUT Agro Commodity किसान परिवारों की साझा पहल है। इसकी शुरुआत इस विश्वास से हुई कि छोटे किसान अपने संसाधन, अनुभव और अवसर साझा करके एक मजबूत तथा आत्मनिर्भर व्यवस्था बना सकते हैं।':'PROUT Agro Commodity is a shared initiative of farming families. It began with the belief that small farmers can build a stronger, self-reliant system by sharing resources, experience and opportunity.',
+  'सामग्री का स्वामित्व एवं प्रबंधन: PROUT Agro Commodity':'Content owned and managed by PROUT Agro Commodity',
   'अ−':'A−','अ':'A','अ+':'A+','१००%':'100%','०':'0','१':'1','२':'2','३':'3','४':'4','एक साझा किसान परिवार':'One cooperative farming family','यहाँ खोजें…':'Search here…','अक्षर छोटे करें':'Decrease text size','अक्षर सामान्य करें':'Reset text size','अक्षर बड़े करें':'Increase text size','प्राउट एग्रो मुखपृष्ठ':'Prout Agro home page','मुख्य मेन्यू':'Primary navigation','महत्वपूर्ण सूचना':'Important notice','गेहूँ और सरसों के खेत में अपनी उपज के साथ खड़े सहकारी किसान':'Cooperative farmers standing with their produce in wheat and mustard fields',
   'मुख्य सामग्री पर जाएँ':'Skip to main content','सूक्ष्म, लघु एवं मध्यम उद्यम सहकारी पहल':'Micro, Small & Medium Enterprise Cooperative Initiative','सामग्री पर जाएँ':'Skip to content','प्राउट एग्रो':'Prout Agro','किसान सहकारी समिति':"Farmers' Cooperative",'खोजें':'Search','खेती से':'From farming','समृद्धि तक':'to prosperity','स्थानीय • शुद्ध • साझा':'Local • Pure • Shared','मेन्यू खोलें':'Open menu','मुखपृष्ठ':'Home','हमारी उपज':'Our Produce','सहकारिता परिचय':'About the Cooperative','खेत से घर तक':'Farm to Home','संपर्क':'Contact','उत्पाद पूछताछ':'Product Enquiry',
   'हमारे खेत • हमारी मेहनत • आपका विश्वास':'Our Farms • Our Labour • Your Trust','धरती की शुद्धता,':'Purity of the earth,','हर घर तक':'delivered to every home','किसानों द्वारा उगाया, सहकारिता द्वारा सँवारा—शुद्ध तेल, पौष्टिक गेहूँ और सुगंधित मसाले सीधे हमारे खेतों से।':'Grown by farmers and prepared by the cooperative—pure oils, nutritious wheat and aromatic spices straight from our fields.','हमारी उपज देखें':'Explore Our Produce','हमारी कहानी जानें':'Discover Our Story','सूचना पट्ट':'Notice Board','थोक एवं खुदरा आपूर्ति के लिए पूछताछ स्वीकार की जा रही है  •  नई फसल का गेहूँ और सरसों तेल शीघ्र उपलब्ध होगा  •  सभी उत्पाद सहकारी किसानों के अपने खेतों से':'Enquiries are open for wholesale and retail supply  •  New-season wheat and mustard oil will be available soon  •  Every product comes from our cooperative farmers’ own fields',
@@ -49,6 +81,8 @@ const english = {
   'हमारी साझा यात्रा':'Our Shared Journey','भूमि से जुड़ाव,':'Rooted in the land,','भविष्य की तैयारी':'ready for the future','पहला चरण':'First Step','किसान परिवारों का जुड़ना':'Farming Families Unite','साझी आवश्यकताओं और अवसरों के लिए एक सहकारी विचार पर सहमति।':'A shared cooperative vision for common needs and opportunities.','दूसरा चरण':'Second Step','उत्पादन और संसाधन साझा करना':'Sharing Production and Resources','खेती के अनुभव, प्रक्रियाओं और गुणवत्ता मानकों को एक साथ लाना।':'Bringing together farming experience, processes and quality standards.','आज':'Today','खेत से ग्राहक तक सीधा संबंध':'A Direct Farm-to-Customer Connection','शुद्ध तेल, गेहूँ और मसालों को भरोसे के साथ उपलब्ध कराना।':'Providing pure oils, wheat and spices with confidence.','हमसे जुड़ें':'Connect With Us','एक बेहतर खाद्य व्यवस्था,':'A better food system,','मिलकर बनाएँ':'built together','उत्पाद, साझेदारी या थोक आवश्यकता के लिए हमारी सहकारी टीम से संपर्क करें।':'Contact our cooperative team for produce, partnerships or wholesale requirements.'
 };
 
+const hindi = Object.fromEntries(Object.entries(english).map(([hi, en]) => [en, hi]));
+
 const originalText = new Map();
 const translatableAttributes = ['aria-label', 'placeholder', 'alt'];
 
@@ -61,19 +95,31 @@ function setLanguage(language) {
     const value = node.nodeValue.trim();
     if (!value) return;
     if (!originalText.has(node)) originalText.set(node, value);
-    const hindi = originalText.get(node);
-    if (english[hindi]) node.nodeValue = node.nodeValue.replace(value, useEnglish ? english[hindi] : hindi);
+    const original = originalText.get(node);
+    const translated = useEnglish ? (english[original] || original) : (english[original] ? original : (hindi[original] || original));
+    node.nodeValue = node.nodeValue.replace(value, translated);
+    node.nodeValue = node.nodeValue.replace(/Prout Agro Farmers' Cooperative|Prout Agro cooperative|Prout Agro(?! Commodity)|प्राउट एग्रो किसान सहकारी समिति|प्राउट एग्रो/gi, 'PROUT Agro Commodity');
   });
   document.querySelectorAll('*').forEach((element) => translatableAttributes.forEach((attribute) => {
     if (!element.hasAttribute(attribute)) return;
     const key = `data-original-${attribute}`;
     if (!element.hasAttribute(key)) element.setAttribute(key, element.getAttribute(attribute));
-    const hindi = element.getAttribute(key);
-    if (english[hindi]) element.setAttribute(attribute, useEnglish ? english[hindi] : hindi);
+    const original = element.getAttribute(key);
+    const translated = useEnglish ? (english[original] || original) : (english[original] ? original : (hindi[original] || original));
+    element.setAttribute(attribute, translated);
+    element.setAttribute(attribute, element.getAttribute(attribute).replace(/Prout Agro Farmers' Cooperative|Prout Agro cooperative|Prout Agro(?! Commodity)|प्राउट एग्रो किसान सहकारी समिति|प्राउट एग्रो/gi, 'PROUT Agro Commodity'));
   }));
+  document.querySelectorAll('.brand strong').forEach((name) => { name.textContent = 'PROUT Agro Commodity'; });
+  document.querySelectorAll('.brand small').forEach((descriptor) => descriptor.remove());
   document.documentElement.lang = language;
-  const aboutPage = location.pathname.includes('about');
-  document.title = useEnglish ? (aboutPage ? 'About the Cooperative | Prout Agro' : "Prout Agro Farmers' Cooperative | Farm-Grown Essentials") : (aboutPage ? 'सहकारिता परिचय | प्राउट एग्रो' : 'प्राउट एग्रो किसान सहकारी समिति');
+  const pageTitles = {
+    'pac-cooperative.html': ['PAC Cooperative | PROUT Agro Commodity', 'पीएसी सहकारिता | PROUT Agro Commodity'],
+    'prout-philosophy.html': ['PROUT Philosophy | PROUT Agro Commodity', 'प्राउट दर्शन | PROUT Agro Commodity'],
+    'our-members.html': ['Our Members | PROUT Agro Commodity', 'हमारे सदस्य | PROUT Agro Commodity'],
+    'about.html': ['About | PROUT Agro Commodity', 'परिचय | PROUT Agro Commodity']
+  };
+  const fileName = location.pathname.split('/').pop() || 'index.html';
+  document.title = pageTitles[fileName]?.[useEnglish ? 0 : 1] || (useEnglish ? 'PROUT Agro Commodity | Farm-Grown Essentials' : 'PROUT Agro Commodity');
   document.querySelectorAll('[data-language]').forEach((button) => button.classList.toggle('active', button.dataset.language === language));
   sessionStorage.setItem('prout-language', language);
 }

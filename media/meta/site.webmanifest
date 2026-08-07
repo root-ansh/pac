@@ -1,5 +1,5 @@
 {
-  "name": "Prout Agro Commodity",
+  "name": "PROUT Agro Commodity",
   "short_name": "PAC",
   "icons": [
     {
@@ -15,7 +15,7 @@
       "purpose": "maskable"
     }
   ],
-  "description": "Farm-grown oils, wheat and spices from Prout Agro Farmers' Cooperative.",
+  "description": "Farm-grown oils, wheat and spices from PROUT Agro Commodity.",
   "start_url": "../../index.html",
   "lang": "en-IN",
   "theme_color": "#174c38",
