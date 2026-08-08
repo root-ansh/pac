@@ -3,26 +3,36 @@
     {
       "id": "mustard-oil",
       "name": "Mustard Oil",
-      "image": "media/products/pac_mustard-oil-fg-v2.png",
+      "name_hi": "सरसों तेल",
+      "availabilityLabel": "Available options",
+      "availabilityLabel_hi": "उपलब्ध विकल्प",
+      "enquiryLabel": "Enquire about product",
+      "enquiryLabel_hi": "उत्पाद के बारे में पूछताछ करें",
+      "image": "media/products/mustard-oil-fg-v2.png",
       "quantities": [
         {
           "weight": "500 ml",
+          "weight_hi": "500 मि.ली.",
           "price": "₹100"
         },
         {
           "weight": "1 litre",
+          "weight_hi": "1 लीटर",
           "price": "₹100"
         },
         {
           "weight": "2 litre",
+          "weight_hi": "2 लीटर",
           "price": "₹100"
         },
         {
           "weight": "5 litre",
+          "weight_hi": "5 लीटर",
           "price": "₹100"
         },
         {
           "weight": "10 litre",
+          "weight_hi": "10 लीटर",
           "price": "₹100"
         }
       ]
@@ -30,14 +40,21 @@
     {
       "id": "wheat",
       "name": "Wheat",
-      "image": "media/products/pac_wheat-fg.png",
+      "name_hi": "गेहूँ",
+      "availabilityLabel": "Available options",
+      "availabilityLabel_hi": "उपलब्ध विकल्प",
+      "enquiryLabel": "Enquire about product",
+      "enquiryLabel_hi": "उत्पाद के बारे में पूछताछ करें",
+      "image": "media/products/wheat-fg.png",
       "quantities": [
         {
           "weight": "5 kg",
+          "weight_hi": "5 किग्रा",
           "price": "₹100"
         },
         {
           "weight": "10 kg",
+          "weight_hi": "10 किग्रा",
           "price": "₹100"
         }
       ]
@@ -45,14 +62,21 @@
     {
       "id": "black-wheat",
       "name": "Black Wheat",
-      "image": "media/products/pac_black-wheat-fg.png",
+      "name_hi": "काला गेहूँ",
+      "availabilityLabel": "Available options",
+      "availabilityLabel_hi": "उपलब्ध विकल्प",
+      "enquiryLabel": "Enquire about product",
+      "enquiryLabel_hi": "उत्पाद के बारे में पूछताछ करें",
+      "image": "media/products/black-wheat-fg.png",
       "quantities": [
         {
           "weight": "5 kg",
+          "weight_hi": "5 किग्रा",
           "price": "₹100"
         },
         {
           "weight": "10 kg",
+          "weight_hi": "10 किग्रा",
           "price": "₹100"
         }
       ]
@@ -60,14 +84,21 @@
     {
       "id": "turmeric-powder",
       "name": "Turmeric Powder",
-      "image": "media/products/pac_turmeric-fg.png",
+      "name_hi": "हल्दी पाउडर",
+      "availabilityLabel": "Available options",
+      "availabilityLabel_hi": "उपलब्ध विकल्प",
+      "enquiryLabel": "Enquire about product",
+      "enquiryLabel_hi": "उत्पाद के बारे में पूछताछ करें",
+      "image": "media/products/turmeric-fg.png",
       "quantities": [
         {
           "weight": "100 g",
+          "weight_hi": "100 ग्राम",
           "price": "₹100"
         },
         {
           "weight": "200 g",
+          "weight_hi": "200 ग्राम",
           "price": "₹100"
         }
       ]
@@ -75,10 +106,16 @@
     {
       "id": "heeng",
       "name": "Heeng",
-      "image": "media/products/pac_heeng-fg.png",
+      "name_hi": "हींग",
+      "availabilityLabel": "Available options",
+      "availabilityLabel_hi": "उपलब्ध विकल्प",
+      "enquiryLabel": "Enquire about product",
+      "enquiryLabel_hi": "उत्पाद के बारे में पूछताछ करें",
+      "image": "media/products/heeng-fg.png",
       "quantities": [
         {
           "weight": "50 g",
+          "weight_hi": "50 ग्राम",
           "price": "₹100"
         }
       ]
@@ -86,14 +123,21 @@
     {
       "id": "white-salt",
       "name": "White Salt",
-      "image": "media/products/pac_white-salt-fg.png",
+      "name_hi": "सफेद नमक",
+      "availabilityLabel": "Available options",
+      "availabilityLabel_hi": "उपलब्ध विकल्प",
+      "enquiryLabel": "Enquire about product",
+      "enquiryLabel_hi": "उत्पाद के बारे में पूछताछ करें",
+      "image": "media/products/white-salt-fg.png",
       "quantities": [
         {
           "weight": "500 g",
+          "weight_hi": "500 ग्राम",
           "price": "₹100"
         },
         {
           "weight": "1 kg",
+          "weight_hi": "1 किग्रा",
           "price": "₹100"
         }
       ]
@@ -101,14 +145,21 @@
     {
       "id": "dhaniya-powder",
       "name": "Dhaniya Powder",
-      "image": "media/products/pac_dhaniya-fg.png",
+      "name_hi": "धनिया पाउडर",
+      "availabilityLabel": "Available options",
+      "availabilityLabel_hi": "उपलब्ध विकल्प",
+      "enquiryLabel": "Enquire about product",
+      "enquiryLabel_hi": "उत्पाद के बारे में पूछताछ करें",
+      "image": "media/products/dhaniya-fg.png",
       "quantities": [
         {
           "weight": "100 g",
+          "weight_hi": "100 ग्राम",
           "price": "₹100"
         },
         {
           "weight": "200 g",
+          "weight_hi": "200 ग्राम",
           "price": "₹100"
         }
       ]
@@ -116,14 +167,21 @@
     {
       "id": "gur",
       "name": "Gur",
-      "image": "media/products/pac_gur-fg.png",
+      "name_hi": "गुड़",
+      "availabilityLabel": "Available options",
+      "availabilityLabel_hi": "उपलब्ध विकल्प",
+      "enquiryLabel": "Enquire about product",
+      "enquiryLabel_hi": "उत्पाद के बारे में पूछताछ करें",
+      "image": "media/products/gur-fg.png",
       "quantities": [
         {
           "weight": "500 g",
+          "weight_hi": "500 ग्राम",
           "price": "₹100"
         },
         {
           "weight": "1 kg",
+          "weight_hi": "1 किग्रा",
           "price": "₹100"
         }
       ]

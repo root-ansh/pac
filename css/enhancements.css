@@ -17,6 +17,7 @@
 .availability-label{font-size:.67rem;text-transform:uppercase;letter-spacing:.14em;color:#b8c9be;font-weight:700}
 .quantity-list{display:flex;flex-wrap:wrap;gap:8px;margin:9px 0 22px}
 .quantity-list span{display:flex;gap:8px;align-items:center;padding:7px 10px;border:1px solid rgba(255,255,255,.25);background:rgba(255,255,255,.1);font-size:.75rem;border-radius:2px}
+.quantity-list i{font-style:normal}
 .quantity-list b{color:#ffd27e}
 .whatsapp-button{display:inline-flex;align-items:center;gap:9px;background:#25d366;color:#082e19;padding:13px 20px;font-weight:800;font-size:.82rem;border-radius:3px}
 .whatsapp-button img{width:22px;height:22px;object-fit:contain}

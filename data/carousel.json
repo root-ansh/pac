@@ -1,69 +1,231 @@
 {
-  "autoplayMs": 2500,
+  "autoplayMs": 3500,
   "products": [
     {
       "id": "mustard-oil",
+      "eyebrow": "Farm fresh • PAC branded",
+      "eyebrow_hi": "खेत से ताज़ा • पीएसी ब्रांडेड",
       "title": "Mustard Oil",
+      "title_hi": "सरसों तेल",
       "subtitle": "Freshly produced oil sourced from Muradnagar Master Unit.",
-      "quantities": [{"weight": "500 ml", "price": "₹100"}, {"weight": "1 litre", "price": "₹100"}, {"weight": "2 litre", "price": "₹100"}, {"weight": "5 litre", "price": "₹100"}, {"weight": "10 litre", "price": "₹100"}],
-      "foregroundImage": "media/products/pac_mustard-oil-fg-v2.png",
-      "backgroundImage": "media/products/pac_mustard-oil-bg.png"
+      "subtitle_hi": "मुरादनगर मास्टर यूनिट से प्राप्त ताज़ा उत्पादित तेल।",
+      "availabilityLabel": "Available quantities",
+      "availabilityLabel_hi": "उपलब्ध मात्राएँ",
+      "enquiryLabel": "Enquire on WhatsApp",
+      "enquiryLabel_hi": "व्हाट्सऐप पर पूछताछ करें",
+      "quantities": [
+        {
+          "weight": "500 ml",
+          "weight_hi": "500 मि.ली.",
+          "price": "₹100"
+        },
+        {
+          "weight": "1 litre",
+          "weight_hi": "1 लीटर",
+          "price": "₹100"
+        },
+        {
+          "weight": "2 litre",
+          "weight_hi": "2 लीटर",
+          "price": "₹100"
+        },
+        {
+          "weight": "5 litre",
+          "weight_hi": "5 लीटर",
+          "price": "₹100"
+        },
+        {
+          "weight": "10 litre",
+          "weight_hi": "10 लीटर",
+          "price": "₹100"
+        }
+      ],
+      "foregroundImage": "media/products/mustard-oil-fg-v2.png",
+      "backgroundImage": "media/products/mustard-oil-bg.png"
     },
     {
       "id": "wheat",
+      "eyebrow": "Farm fresh • PAC branded",
+      "eyebrow_hi": "खेत से ताज़ा • पीएसी ब्रांडेड",
       "title": "Wheat",
+      "title_hi": "गेहूँ",
       "subtitle": "Freshly produced atta sourced from Muradnagar Master Unit and packed using our in-house packaging machine.",
-      "quantities": [{"weight": "5 kg", "price": "₹100"}, {"weight": "10 kg", "price": "₹100"}],
-      "foregroundImage": "media/products/pac_wheat-fg.png",
-      "backgroundImage": "media/products/pac_wheat-bg.png"
+      "subtitle_hi": "मुरादनगर मास्टर यूनिट से प्राप्त ताज़ा आटा, हमारी आंतरिक पैकेजिंग मशीन से पैक किया गया।",
+      "availabilityLabel": "Available quantities",
+      "availabilityLabel_hi": "उपलब्ध मात्राएँ",
+      "enquiryLabel": "Enquire on WhatsApp",
+      "enquiryLabel_hi": "व्हाट्सऐप पर पूछताछ करें",
+      "quantities": [
+        {
+          "weight": "5 kg",
+          "weight_hi": "5 किग्रा",
+          "price": "₹100"
+        },
+        {
+          "weight": "10 kg",
+          "weight_hi": "10 किग्रा",
+          "price": "₹100"
+        }
+      ],
+      "foregroundImage": "media/products/wheat-fg.png",
+      "backgroundImage": "media/products/wheat-bg.png"
     },
     {
       "id": "black-wheat",
+      "eyebrow": "Farm fresh • PAC branded",
+      "eyebrow_hi": "खेत से ताज़ा • पीएसी ब्रांडेड",
       "title": "Black Wheat",
+      "title_hi": "काला गेहूँ",
       "subtitle": "Freshly produced black wheat atta sourced from Muradnagar Master Unit and packed using our in-house packaging machine.",
-      "quantities": [{"weight": "5 kg", "price": "₹100"}, {"weight": "10 kg", "price": "₹100"}],
-      "foregroundImage": "media/products/pac_black-wheat-fg.png",
-      "backgroundImage": "media/products/pac_black-wheat-bg.png"
+      "subtitle_hi": "मुरादनगर मास्टर यूनिट से प्राप्त ताज़ा काले गेहूँ का आटा, हमारी आंतरिक पैकेजिंग मशीन से पैक किया गया।",
+      "availabilityLabel": "Available quantities",
+      "availabilityLabel_hi": "उपलब्ध मात्राएँ",
+      "enquiryLabel": "Enquire on WhatsApp",
+      "enquiryLabel_hi": "व्हाट्सऐप पर पूछताछ करें",
+      "quantities": [
+        {
+          "weight": "5 kg",
+          "weight_hi": "5 किग्रा",
+          "price": "₹100"
+        },
+        {
+          "weight": "10 kg",
+          "weight_hi": "10 किग्रा",
+          "price": "₹100"
+        }
+      ],
+      "foregroundImage": "media/products/black-wheat-fg.png",
+      "backgroundImage": "media/products/black-wheat-bg.png"
     },
     {
       "id": "turmeric-powder",
+      "eyebrow": "Farm fresh • PAC branded",
+      "eyebrow_hi": "खेत से ताज़ा • पीएसी ब्रांडेड",
       "title": "Turmeric Powder",
+      "title_hi": "हल्दी पाउडर",
       "subtitle": "Naturally vibrant turmeric, carefully cleaned, ground and packed to preserve its colour and earthy aroma.",
-      "quantities": [{"weight": "100 g", "price": "₹100"}, {"weight": "200 g", "price": "₹100"}],
-      "foregroundImage": "media/products/pac_turmeric-fg.png",
-      "backgroundImage": "media/products/pac_turmeric-bg.png"
+      "subtitle_hi": "प्राकृतिक रूप से चमकीली हल्दी, जिसका रंग और मिट्टी जैसी सुगंध बनाए रखने के लिए सावधानी से सफाई, पिसाई और पैकिंग की गई है।",
+      "availabilityLabel": "Available quantities",
+      "availabilityLabel_hi": "उपलब्ध मात्राएँ",
+      "enquiryLabel": "Enquire on WhatsApp",
+      "enquiryLabel_hi": "व्हाट्सऐप पर पूछताछ करें",
+      "quantities": [
+        {
+          "weight": "100 g",
+          "weight_hi": "100 ग्राम",
+          "price": "₹100"
+        },
+        {
+          "weight": "200 g",
+          "weight_hi": "200 ग्राम",
+          "price": "₹100"
+        }
+      ],
+      "foregroundImage": "media/products/turmeric-fg.png",
+      "backgroundImage": "media/products/turmeric-bg.png"
     },
     {
       "id": "heeng",
+      "eyebrow": "Farm fresh • PAC branded",
+      "eyebrow_hi": "खेत से ताज़ा • पीएसी ब्रांडेड",
       "title": "Heeng",
+      "title_hi": "हींग",
       "subtitle": "Aromatic asafoetida packed in a convenient small pouch to bring depth and character to everyday cooking.",
-      "quantities": [{"weight": "50 g", "price": "₹100"}],
-      "foregroundImage": "media/products/pac_heeng-fg.png",
-      "backgroundImage": "media/products/pac_heeng-bg.png"
+      "subtitle_hi": "सुगंधित हींग, रोज़मर्रा के भोजन में गहराई और स्वाद लाने के लिए सुविधाजनक छोटे पैकेट में।",
+      "availabilityLabel": "Available quantities",
+      "availabilityLabel_hi": "उपलब्ध मात्राएँ",
+      "enquiryLabel": "Enquire on WhatsApp",
+      "enquiryLabel_hi": "व्हाट्सऐप पर पूछताछ करें",
+      "quantities": [
+        {
+          "weight": "50 g",
+          "weight_hi": "50 ग्राम",
+          "price": "₹100"
+        }
+      ],
+      "foregroundImage": "media/products/heeng-fg.png",
+      "backgroundImage": "media/products/heeng-bg.png"
     },
     {
       "id": "white-salt",
+      "eyebrow": "Farm fresh • PAC branded",
+      "eyebrow_hi": "खेत से ताज़ा • पीएसी ब्रांडेड",
       "title": "White Salt",
+      "title_hi": "सफेद नमक",
       "subtitle": "Clean, fine white salt packed for dependable everyday use in home and commercial kitchens.",
-      "quantities": [{"weight": "500 g", "price": "₹100"}, {"weight": "1 kg", "price": "₹100"}],
-      "foregroundImage": "media/products/pac_white-salt-fg.png",
-      "backgroundImage": "media/products/pac_white-salt-bg.png"
+      "subtitle_hi": "घर और व्यावसायिक रसोई में भरोसेमंद रोज़मर्रा के उपयोग के लिए साफ़, महीन सफेद नमक।",
+      "availabilityLabel": "Available quantities",
+      "availabilityLabel_hi": "उपलब्ध मात्राएँ",
+      "enquiryLabel": "Enquire on WhatsApp",
+      "enquiryLabel_hi": "व्हाट्सऐप पर पूछताछ करें",
+      "quantities": [
+        {
+          "weight": "500 g",
+          "weight_hi": "500 ग्राम",
+          "price": "₹100"
+        },
+        {
+          "weight": "1 kg",
+          "weight_hi": "1 किग्रा",
+          "price": "₹100"
+        }
+      ],
+      "foregroundImage": "media/products/white-salt-fg.png",
+      "backgroundImage": "media/products/white-salt-bg.png"
     },
     {
       "id": "dhaniya-powder",
+      "eyebrow": "Farm fresh • PAC branded",
+      "eyebrow_hi": "खेत से ताज़ा • पीएसी ब्रांडेड",
       "title": "Dhaniya Powder",
+      "title_hi": "धनिया पाउडर",
       "subtitle": "Fresh coriander powder with a naturally warm aroma, prepared in small batches for better flavour.",
-      "quantities": [{"weight": "100 g", "price": "₹100"}, {"weight": "200 g", "price": "₹100"}],
-      "foregroundImage": "media/products/pac_dhaniya-fg.png",
-      "backgroundImage": "media/products/pac_dhaniya-bg.png"
+      "subtitle_hi": "प्राकृतिक गर्म सुगंध वाला ताज़ा धनिया पाउडर, बेहतर स्वाद के लिए छोटी खेप में तैयार।",
+      "availabilityLabel": "Available quantities",
+      "availabilityLabel_hi": "उपलब्ध मात्राएँ",
+      "enquiryLabel": "Enquire on WhatsApp",
+      "enquiryLabel_hi": "व्हाट्सऐप पर पूछताछ करें",
+      "quantities": [
+        {
+          "weight": "100 g",
+          "weight_hi": "100 ग्राम",
+          "price": "₹100"
+        },
+        {
+          "weight": "200 g",
+          "weight_hi": "200 ग्राम",
+          "price": "₹100"
+        }
+      ],
+      "foregroundImage": "media/products/dhaniya-fg.png",
+      "backgroundImage": "media/products/dhaniya-bg.png"
     },
     {
       "id": "gur",
+      "eyebrow": "Farm fresh • PAC branded",
+      "eyebrow_hi": "खेत से ताज़ा • पीएसी ब्रांडेड",
       "title": "Gur",
+      "title_hi": "गुड़",
       "subtitle": "Traditional golden jaggery with a rich sugarcane flavour, conveniently packed for everyday use.",
-      "quantities": [{"weight": "500 g", "price": "₹100"}, {"weight": "1 kg", "price": "₹100"}],
-      "foregroundImage": "media/products/pac_gur-fg.png",
-      "backgroundImage": "media/products/pac_gur-bg.png"
+      "subtitle_hi": "गन्ने के भरपूर स्वाद वाला पारंपरिक सुनहरा गुड़, रोज़मर्रा के उपयोग के लिए सुविधाजनक पैकिंग में।",
+      "availabilityLabel": "Available quantities",
+      "availabilityLabel_hi": "उपलब्ध मात्राएँ",
+      "enquiryLabel": "Enquire on WhatsApp",
+      "enquiryLabel_hi": "व्हाट्सऐप पर पूछताछ करें",
+      "quantities": [
+        {
+          "weight": "500 g",
+          "weight_hi": "500 ग्राम",
+          "price": "₹100"
+        },
+        {
+          "weight": "1 kg",
+          "weight_hi": "1 किग्रा",
+          "price": "₹100"
+        }
+      ],
+      "foregroundImage": "media/products/gur-fg.png",
+      "backgroundImage": "media/products/gur-bg.png"
     }
   ]
 }

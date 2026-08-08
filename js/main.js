@@ -83,6 +83,18 @@ if (pageBanner && pageHeroImages[currentFile]) {
   pageBanner.style.backgroundImage = `url('${pageHeroImages[currentFile]}')`;
 }
 
+const bindJsonText = (element, englishText, hindiText) => {
+  if (!element) return;
+  element.dataset.jsonEn = englishText;
+  element.dataset.jsonHi = hindiText || englishText;
+};
+const applyJsonLanguage = (language) => {
+  document.querySelectorAll('[data-json-en]').forEach((element) => {
+    element.textContent = language === 'hi' ? element.dataset.jsonHi : element.dataset.jsonEn;
+  });
+};
+document.addEventListener('proutlanguagechange', () => applyJsonLanguage(document.documentElement.lang));
+
 const productCarousel = document.querySelector('.product-carousel');
 if (productCarousel) {
   const track = productCarousel.querySelector('.carousel-track');
@@ -96,7 +108,13 @@ if (productCarousel) {
         const slide = document.createElement('article');
         slide.className = `product-slide${index === 0 ? ' active' : ''}`;
         slide.setAttribute('aria-hidden', String(index !== 0));
-        slide.innerHTML = `<img class="slide-background" src="${product.backgroundImage}" alt="" loading="${index === 0 ? 'eager' : 'lazy'}"><div class="slide-overlay"></div><div class="container slide-layout"><div class="slide-copy"><p class="slide-eyebrow">Farm fresh • PAC branded</p><h1>${product.title}</h1><p>${product.subtitle}</p><span class="availability-label">Available quantities</span><div class="quantity-list">${product.quantities.map(({weight,price})=>`<span>${weight}<b>${price}</b></span>`).join('')}</div><a class="whatsapp-button" href="https://api.whatsapp.com/send?text=${enquiry}" target="_blank" rel="noopener"><img src="media/whatsapp.svg" alt="" aria-hidden="true">Enquire on WhatsApp</a></div><img class="slide-product" src="${product.foregroundImage}" alt="PAC branded ${product.title} packaging" loading="${index === 0 ? 'eager' : 'lazy'}"></div>`;
+        slide.innerHTML = `<img class="slide-background" src="${product.backgroundImage}" alt="" loading="${index === 0 ? 'eager' : 'lazy'}"><div class="slide-overlay"></div><div class="container slide-layout"><div class="slide-copy"><p class="slide-eyebrow"></p><h1></h1><p class="slide-subtitle"></p><span class="availability-label"></span><div class="quantity-list">${product.quantities.map(({price})=>`<span><i class="quantity-weight"></i><b>${price}</b></span>`).join('')}</div><a class="whatsapp-button" href="https://api.whatsapp.com/send?text=${enquiry}" target="_blank" rel="noopener"><img src="media/whatsapp.svg" alt="" aria-hidden="true"><span class="enquiry-text"></span></a></div><img class="slide-product" src="${product.foregroundImage}" alt="PAC branded ${product.title} packaging" loading="${index === 0 ? 'eager' : 'lazy'}"></div>`;
+        bindJsonText(slide.querySelector('.slide-eyebrow'), product.eyebrow, product.eyebrow_hi);
+        bindJsonText(slide.querySelector('h1'), product.title, product.title_hi);
+        bindJsonText(slide.querySelector('.slide-subtitle'), product.subtitle, product.subtitle_hi);
+        bindJsonText(slide.querySelector('.availability-label'), product.availabilityLabel, product.availabilityLabel_hi);
+        bindJsonText(slide.querySelector('.enquiry-text'), product.enquiryLabel, product.enquiryLabel_hi);
+        slide.querySelectorAll('.quantity-weight').forEach((element, quantityIndex) => bindJsonText(element, product.quantities[quantityIndex].weight, product.quantities[quantityIndex].weight_hi));
         track.append(slide);
         const dot = document.createElement('button');
         dot.type = 'button';
@@ -163,7 +181,11 @@ if (productsGrid) {
         const enquiry = encodeURIComponent(`Hello PROUT Agro Commodity, I would like to enquire about ${product.name}. Please share availability and ordering details.`);
         const card = document.createElement('article');
         card.className = 'product-card';
-        card.innerHTML = `<div class="product-card-image"><img src="${product.image}" alt="PAC branded ${product.name} packaging" loading="lazy"></div><div class="product-card-body"><h3>${product.name}</h3><span class="product-options-label">Available options</span><div class="product-card-quantities">${product.quantities.map(({weight,price})=>`<span><b>${weight}</b><small>${price}</small></span>`).join('')}</div><a class="product-enquire" href="https://api.whatsapp.com/send?text=${enquiry}" target="_blank" rel="noopener"><span class="enquire-icon" aria-hidden="true"><img class="enquire-icon-default" src="media/whatsapp.svg" alt=""><img class="enquire-icon-hover" src="media/whatsapp_black.svg" alt=""></span>Enquire about product</a></div>`;
+        card.innerHTML = `<div class="product-card-image"><img src="${product.image}" alt="PAC branded ${product.name} packaging" loading="lazy"></div><div class="product-card-body"><h3></h3><span class="product-options-label"></span><div class="product-card-quantities">${product.quantities.map(({price})=>`<span><b class="quantity-weight"></b><small>${price}</small></span>`).join('')}</div><a class="product-enquire" href="https://api.whatsapp.com/send?text=${enquiry}" target="_blank" rel="noopener"><span class="enquire-icon" aria-hidden="true"><img class="enquire-icon-default" src="media/whatsapp.svg" alt=""><img class="enquire-icon-hover" src="media/whatsapp_black.svg" alt=""></span><span class="enquiry-text"></span></a></div>`;
+        bindJsonText(card.querySelector('h3'), product.name, product.name_hi);
+        bindJsonText(card.querySelector('.product-options-label'), product.availabilityLabel, product.availabilityLabel_hi);
+        bindJsonText(card.querySelector('.enquiry-text'), product.enquiryLabel, product.enquiryLabel_hi);
+        card.querySelectorAll('.quantity-weight').forEach((element, quantityIndex) => bindJsonText(element, product.quantities[quantityIndex].weight, product.quantities[quantityIndex].weight_hi));
         productsGrid.append(card);
       });
       setLanguage(sessionStorage.getItem('prout-language') || 'en');
