@@ -195,7 +195,7 @@ if (productsGrid) {
 
 document.querySelectorAll('[data-year]').forEach((element) => { element.textContent = new Date().getFullYear(); });
 
-const sizeMap = { minus: '15px', reset: '16px', plus: '18px' };
+const sizeMap = { minus: '30px', reset: '32px', plus: '36px' };
 document.querySelectorAll('[data-size]').forEach((button) => button.addEventListener('click', () => {
   document.documentElement.style.fontSize = sizeMap[button.dataset.size];
 }));
