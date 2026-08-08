@@ -125,28 +125,6 @@
       "backgroundImage": "media/products/pac_turmeric-bg.png"
     },
     {
-      "id": "heeng",
-      "eyebrow": "",
-      "eyebrow_hi": "",
-      "title": "Heeng",
-      "title_hi": "हींग",
-      "subtitle": "Aromatic asafoetida packed in a convenient small pouch to bring depth and character to everyday cooking.",
-      "subtitle_hi": "सुगंधित हींग, रोज़मर्रा के भोजन में गहराई और स्वाद लाने के लिए सुविधाजनक छोटे पैकेट में।",
-      "availabilityLabel": "Available quantities",
-      "availabilityLabel_hi": "उपलब्ध मात्राएँ",
-      "enquiryLabel": "Enquire on WhatsApp",
-      "enquiryLabel_hi": "व्हाट्सऐप पर पूछताछ करें",
-      "quantities": [
-        {
-          "weight": "50 g",
-          "weight_hi": "50 ग्राम",
-          "price": "₹100"
-        }
-      ],
-      "foregroundImage": "media/products/pac_heeng-fg.png",
-      "backgroundImage": "media/products/pac_heeng-bg.png"
-    },
-    {
       "id": "white-salt",
       "eyebrow": "",
       "eyebrow_hi": "",
@@ -199,6 +177,28 @@
       ],
       "foregroundImage": "media/products/pac_dhaniya-fg.png",
       "backgroundImage": "media/products/pac_dhaniya-bg.png"
+    },
+    {
+      "id": "heeng",
+      "eyebrow": "",
+      "eyebrow_hi": "",
+      "title": "Heeng",
+      "title_hi": "हींग",
+      "subtitle": "Aromatic asafoetida packed in a convenient small pouch to bring depth and character to everyday cooking.",
+      "subtitle_hi": "सुगंधित हींग, रोज़मर्रा के भोजन में गहराई और स्वाद लाने के लिए सुविधाजनक छोटे पैकेट में।",
+      "availabilityLabel": "Available quantities",
+      "availabilityLabel_hi": "उपलब्ध मात्राएँ",
+      "enquiryLabel": "Enquire on WhatsApp",
+      "enquiryLabel_hi": "व्हाट्सऐप पर पूछताछ करें",
+      "quantities": [
+        {
+          "weight": "50 g",
+          "weight_hi": "50 ग्राम",
+          "price": "₹100"
+        }
+      ],
+      "foregroundImage": "media/products/pac_heeng-fg.png",
+      "backgroundImage": "media/products/pac_heeng-bg.png"
     },
     {
       "id": "gur",

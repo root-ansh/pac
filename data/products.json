@@ -104,23 +104,6 @@
       ]
     },
     {
-      "id": "heeng",
-      "name": "Heeng",
-      "name_hi": "हींग",
-      "availabilityLabel": "Available options",
-      "availabilityLabel_hi": "उपलब्ध विकल्प",
-      "enquiryLabel": "Enquire about product",
-      "enquiryLabel_hi": "उत्पाद के बारे में पूछताछ करें",
-      "image": "media/products/pac_heeng-fg.png",
-      "quantities": [
-        {
-          "weight": "50 g",
-          "weight_hi": "50 ग्राम",
-          "price": "₹100"
-        }
-      ]
-    },
-    {
       "id": "white-salt",
       "name": "Rock Salt",
       "name_hi": "सेंधा नमक",
@@ -164,6 +147,24 @@
         }
       ]
     },
+    {
+      "id": "heeng",
+      "name": "Heeng",
+      "name_hi": "हींग",
+      "availabilityLabel": "Available options",
+      "availabilityLabel_hi": "उपलब्ध विकल्प",
+      "enquiryLabel": "Enquire about product",
+      "enquiryLabel_hi": "उत्पाद के बारे में पूछताछ करें",
+      "image": "media/products/pac_heeng-fg.png",
+      "quantities": [
+        {
+          "weight": "50 g",
+          "weight_hi": "50 ग्राम",
+          "price": "₹100"
+        }
+      ]
+    },
+
     {
       "id": "gur",
       "name": "Gur",
