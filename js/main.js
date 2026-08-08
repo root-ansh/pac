@@ -23,17 +23,11 @@ if (initiativeTitle) initiativeTitle.textContent = 'A Self Help Group Initiative
 if (navigation) {
   const root = insidePages ? '../' : '';
   const currentPage = location.pathname.split('/').pop() || 'index.html';
-  const aboutActive = ['pac-cooperative.html', 'prout-philosophy.html', 'our-members.html'].includes(currentPage);
   const contactActive = currentPage === 'contact.html';
   navigation.innerHTML = `
-    <div class="nav-dropdown${aboutActive ? ' active' : ''}">
-      <button class="dropdown-toggle" type="button" aria-expanded="false">About <span class="menu-chevron" aria-hidden="true"></span></button>
-      <div class="dropdown-menu">
-        <a class="${currentPage === 'prout-philosophy.html' ? 'active' : ''}" href="${root}pages/prout-philosophy.html">Prout Cooperatives</a>
-        <a class="about-pac-link ${currentPage === 'pac-cooperative.html' ? 'active' : ''}" href="${root}pages/pac-cooperative.html"><span>About PAC</span><em class="join-us-badge">Join us</em></a>
-        <a class="${currentPage === 'our-members.html' ? 'active' : ''}" href="${root}pages/our-members.html">Our Members</a>
-      </div>
-    </div>
+    <a class="${currentPage === 'prout-philosophy.html' ? 'active' : ''}" href="${root}pages/prout-philosophy.html">Prout Cooperatives</a>
+    <a class="about-pac-link ${currentPage === 'pac-cooperative.html' ? 'active' : ''}" href="${root}pages/pac-cooperative.html"><span>About PAC</span><em class="join-us-badge">Join us</em></a>
+    <a class="${currentPage === 'our-members.html' ? 'active' : ''}" href="${root}pages/our-members.html">Our Members</a>
     <a class="${contactActive ? 'active' : ''}" href="${root}pages/contact.html">Contact Us</a>`;
 }
 
