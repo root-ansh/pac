@@ -156,7 +156,7 @@ if (productCarousel) {
         const label = userPaused ? (useHindi ? 'कैरोसेल चलाएँ' : 'Play carousel') : (useHindi ? 'कैरोसेल रोकें' : 'Pause carousel');
         pauseButton.setAttribute('aria-label', label);
         pauseButton.setAttribute('aria-pressed', String(userPaused));
-        pauseIcon.textContent = userPaused ? '▶' : 'Ⅱ';
+        pauseIcon.textContent = '';
         pauseLabel.textContent = label;
       };
       const manuallyShow = (next) => { showSlide(next); startCarousel(); };
