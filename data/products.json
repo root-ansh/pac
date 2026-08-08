@@ -3,7 +3,7 @@
     {
       "id": "mustard-oil",
       "name": "Mustard Oil",
-      "image": "media/products/mustard-oil-fg-v2.png",
+      "image": "media/products/pac_mustard-oil-fg-v2.png",
       "quantities": [
         {
           "weight": "500 ml",
@@ -30,7 +30,7 @@
     {
       "id": "wheat",
       "name": "Wheat",
-      "image": "media/products/wheat-fg.png",
+      "image": "media/products/pac_wheat-fg.png",
       "quantities": [
         {
           "weight": "5 kg",
@@ -45,7 +45,7 @@
     {
       "id": "black-wheat",
       "name": "Black Wheat",
-      "image": "media/products/black-wheat-fg.png",
+      "image": "media/products/pac_black-wheat-fg.png",
       "quantities": [
         {
           "weight": "5 kg",
@@ -60,7 +60,7 @@
     {
       "id": "turmeric-powder",
       "name": "Turmeric Powder",
-      "image": "media/products/turmeric-fg.png",
+      "image": "media/products/pac_turmeric-fg.png",
       "quantities": [
         {
           "weight": "100 g",
@@ -75,7 +75,7 @@
     {
       "id": "heeng",
       "name": "Heeng",
-      "image": "media/products/heeng-fg.png",
+      "image": "media/products/pac_heeng-fg.png",
       "quantities": [
         {
           "weight": "50 g",
@@ -86,7 +86,7 @@
     {
       "id": "white-salt",
       "name": "White Salt",
-      "image": "media/products/white-salt-fg.png",
+      "image": "media/products/pac_white-salt-fg.png",
       "quantities": [
         {
           "weight": "500 g",
@@ -101,7 +101,7 @@
     {
       "id": "dhaniya-powder",
       "name": "Dhaniya Powder",
-      "image": "media/products/dhaniya-fg.png",
+      "image": "media/products/pac_dhaniya-fg.png",
       "quantities": [
         {
           "weight": "100 g",
@@ -116,7 +116,7 @@
     {
       "id": "gur",
       "name": "Gur",
-      "image": "media/products/gur-fg.png",
+      "image": "media/products/pac_gur-fg.png",
       "quantities": [
         {
           "weight": "500 g",
