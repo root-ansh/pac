@@ -60,6 +60,37 @@ html{font-size:24px}
 .product-enquire:hover .enquire-icon-default,.product-enquire:focus-visible .enquire-icon-default{opacity:0}
 .product-enquire:hover .enquire-icon-hover,.product-enquire:focus-visible .enquire-icon-hover{opacity:1}
 
+.dropdown-menu .about-pac-link{display:flex!important;align-items:center;gap:12px}
+.join-us-badge{margin-left:auto;padding:2px 7px;border-radius:10px;background:var(--red);color:white;font-size:.56rem;font-style:normal;line-height:1.4;animation:join-us-blink 1.15s ease-in-out infinite}
+@keyframes join-us-blink{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.35;transform:scale(.96)}}
+.home-socials,.contact-socials{display:flex;flex-wrap:wrap;gap:9px;margin-top:24px}
+.home-socials a,.contact-socials a{padding:7px 12px;border:1px solid rgba(255,255,255,.38);border-radius:2px;font-size:.7rem;font-weight:700}
+.home-socials a:hover,.home-socials a:focus-visible{background:white;color:var(--green)}
+.contact-action{padding:34px;background:white;color:var(--ink);box-shadow:0 14px 35px rgba(0,0,0,.16)}
+.contact-action p{margin:0 0 18px!important;color:var(--muted)!important}
+.contact-page-button{background:var(--saffron);color:white}
+.contact-details{background:#faf9f5}
+.contact-details-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:70px;align-items:start}
+.contact-details h2,.locations h2{font-family:var(--serif);font-size:clamp(2rem,4vw,3.25rem);font-weight:400;line-height:1.15;color:var(--green);margin:0 0 18px}
+.contact-methods{display:grid;gap:12px;margin-top:28px}
+.contact-methods a{display:flex;flex-direction:column;padding:16px 18px;border-left:4px solid var(--saffron);background:white;box-shadow:0 5px 18px rgba(20,50,35,.06)}
+.contact-methods span{font-size:.76rem;color:var(--muted)}
+.contact-socials a{border-color:var(--green);color:var(--green)}
+.contact-socials a:hover,.contact-socials a:focus-visible{background:var(--green);color:white}
+.contact-form{display:grid;gap:16px;padding:32px;background:white;border:1px solid var(--line);box-shadow:0 12px 32px rgba(20,50,35,.08)}
+.contact-form label{display:grid;gap:5px;font-size:.72rem;font-weight:700;color:var(--green)}
+.contact-form input,.contact-form textarea{width:100%;border:1px solid #ccd5cf;background:#fcfcfa;padding:11px 12px;color:var(--ink);font:inherit;resize:vertical}
+.contact-form input:focus,.contact-form textarea:focus{outline:2px solid var(--saffron);outline-offset:1px}
+.contact-form button{border:0;background:var(--green);color:white;padding:13px 18px;font-weight:800;cursor:pointer}
+.contact-form button:hover,.contact-form button:focus-visible{background:var(--saffron)}
+.locations{background:#f1ede2}
+.location-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.location-grid article{background:white;border:1px solid var(--line)}
+.location-grid article>div{padding:22px 24px}
+.location-grid h3{font-family:var(--serif);font-size:1.35rem;color:var(--green);margin:0 0 6px}
+.location-grid p{font-size:.76rem;color:var(--muted);margin:0}
+.location-grid iframe{display:block;width:100%;height:360px;border:0}
+
 .page-banner.generated-hero{min-height:360px;display:flex;align-items:center;background-position:center;background-size:cover;position:relative;isolation:isolate}
 .page-banner.generated-hero:before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(7,37,26,.95),rgba(7,37,26,.62) 48%,rgba(7,37,26,.06));z-index:-1}
 .page-banner.generated-hero .container{position:relative}
@@ -79,6 +110,7 @@ html{font-size:24px}
   .slide-product{position:absolute;right:-5%;top:65px;width:54%;height:330px;opacity:.9}
   .slide-overlay{background:linear-gradient(180deg,rgba(7,25,18,.22),rgba(7,25,18,.93) 58%,rgba(7,25,18,.98))}
   .all-products-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .contact-details-grid,.location-grid{grid-template-columns:1fr}
 }
 @media(max-width:600px){
   .product-carousel{height:730px}
@@ -100,3 +132,4 @@ html{font-size:24px}
   .product-card-body h3{font-size:1.4rem}
 }
 @media(prefers-reduced-motion:reduce){.product-slide,.menu-chevron{transition:none}}
+@media(prefers-reduced-motion:reduce){.join-us-badge{animation:none}}

@@ -24,17 +24,27 @@ if (navigation) {
   const root = insidePages ? '../' : '';
   const currentPage = location.pathname.split('/').pop() || 'index.html';
   const aboutActive = ['pac-cooperative.html', 'prout-philosophy.html', 'our-members.html'].includes(currentPage);
+  const contactActive = currentPage === 'contact.html';
   navigation.innerHTML = `
     <div class="nav-dropdown${aboutActive ? ' active' : ''}">
       <button class="dropdown-toggle" type="button" aria-expanded="false">About <span class="menu-chevron" aria-hidden="true"></span></button>
       <div class="dropdown-menu">
-        <a class="${currentPage === 'pac-cooperative.html' ? 'active' : ''}" href="${root}pages/pac-cooperative.html">PAC Cooperative</a>
-        <a class="${currentPage === 'prout-philosophy.html' ? 'active' : ''}" href="${root}pages/prout-philosophy.html">PROUT Philosophy</a>
+        <a class="${currentPage === 'prout-philosophy.html' ? 'active' : ''}" href="${root}pages/prout-philosophy.html">Prout Cooperatives</a>
+        <a class="about-pac-link ${currentPage === 'pac-cooperative.html' ? 'active' : ''}" href="${root}pages/pac-cooperative.html"><span>About PAC</span><em class="join-us-badge">Join us</em></a>
         <a class="${currentPage === 'our-members.html' ? 'active' : ''}" href="${root}pages/our-members.html">Our Members</a>
       </div>
     </div>
-    <a href="${root}index.html#sampark">Contact Us</a>`;
+    <a class="${contactActive ? 'active' : ''}" href="${root}pages/contact.html">Contact Us</a>`;
 }
+
+document.querySelectorAll('footer a').forEach((link) => {
+  if (link.href.endsWith('/prout-philosophy.html')) link.textContent = 'Prout Cooperatives';
+  if (link.href.endsWith('/pac-cooperative.html')) link.textContent = 'About PAC';
+  if (link.getAttribute('href')?.includes('#sampark')) {
+    link.href = `${insidePages ? '' : 'pages/'}contact.html`;
+    link.textContent = 'Contact Us';
+  }
+});
 
 if (navButton && navigation) {
   navButton.addEventListener('click', () => {
@@ -74,13 +84,19 @@ if (navButton && navigation) {
 const pageHeroImages = {
   'pac-cooperative.html': '../media/pages/pac-cooperative-hero.png',
   'prout-philosophy.html': '../media/pages/prout-philosophy-hero.png',
-  'our-members.html': '../media/pages/our-members-hero.png'
+  'our-members.html': '../media/pages/our-members-hero.png',
+  'contact.html': '../media/pages/pac-cooperative-hero.png'
 };
 const currentFile = location.pathname.split('/').pop() || 'index.html';
 const pageBanner = document.querySelector('.page-banner');
 if (pageBanner && pageHeroImages[currentFile]) {
   pageBanner.classList.add('generated-hero');
   pageBanner.style.backgroundImage = `url('${pageHeroImages[currentFile]}')`;
+}
+if (currentFile === 'prout-philosophy.html' && pageBanner) {
+  pageBanner.querySelector('p').textContent = 'About / Prout Cooperatives';
+  pageBanner.querySelector('h1').textContent = 'Prout Cooperatives';
+  document.querySelector('.info-copy .section-tag').textContent = 'What are Prout Cooperatives?';
 }
 
 const bindJsonText = (element, englishText, hindiText) => {
@@ -195,6 +211,14 @@ if (productsGrid) {
 
 document.querySelectorAll('[data-year]').forEach((element) => { element.textContent = new Date().getFullYear(); });
 
+document.querySelectorAll('.contact-form').forEach((form) => form.addEventListener('submit', (event) => {
+  event.preventDefault();
+  const data = new FormData(form);
+  const subject = encodeURIComponent(`Website enquiry from ${data.get('name') || 'visitor'}`);
+  const body = encodeURIComponent(`Name: ${data.get('name') || ''}\nEmail: ${data.get('email') || ''}\nPhone: ${data.get('phone') || ''}\n\n${data.get('message') || ''}`);
+  location.href = `mailto:hello@proutagro.com?subject=${subject}&body=${body}`;
+}));
+
 const sizeMap = { minus: '22.5px', reset: '24px', plus: '27px' };
 document.querySelectorAll('[data-size]').forEach((button) => button.addEventListener('click', () => {
   document.documentElement.style.fontSize = sizeMap[button.dataset.size];
@@ -206,6 +230,8 @@ document.querySelectorAll('.search').forEach((form) => form.addEventListener('su
 }));
 
 const english = {
+  'प्राउट सहकारिताएँ':'Prout Cooperatives','पीएसी के बारे में':'About PAC','हमसे जुड़ें':'Join us','परिचय / प्राउट सहकारिताएँ':'About / Prout Cooperatives','परिचय / पीएसी के बारे में':'About / About PAC','प्राउट सहकारिताएँ क्या हैं?':'What are Prout Cooperatives?','पीएसी क्या है?':'What is PAC?','पीएसी किसानों और उत्पादकों को संसाधन, जिम्मेदारी और उपलब्धियाँ साझा करने के लिए एक मंच प्रदान करता है।':'PAC gives farmers and producers a platform to share resources, responsibility and achievement.','पीएसी से जुड़ें':'Join PAC',
+  'मुखपृष्ठ / संपर्क करें':'Home / Contact Us','हमें आपसे बात करके खुशी होगी':'We would be glad to hear from you','संपर्क में आएँ':'Get in touch','हमारी टीम से सीधे बात करें':'Talk directly with our team','उत्पादों, सहकारी सदस्यता, साझेदारी या थोक आवश्यकताओं के बारे में हमसे संपर्क करें।':'Contact us about products, cooperative membership, partnerships or bulk requirements.','ईमेल':'Email','बातचीत शुरू करें':'Start a conversation','ईमेल भेजें':'Send an email','नाम':'Name','फ़ोन':'Phone','संदेश':'Message','हमारे स्थान':'Our locations','PROUT Agro Commodity पर आएँ':'Visit PROUT Agro Commodity','मुरादनगर मास्टर यूनिट':'Muradnagar Master Unit','मुरादनगर में हमारी उत्पादन और पैकेजिंग मास्टर यूनिट।':'Our production and packaging master unit in Muradnagar.','रविवार स्टॉल — छतरपुर':'Sunday Stall — Chhatarpur','हर रविवार छतरपुर, नई दिल्ली में हमारे ऑफलाइन स्टॉल पर आएँ।':'Visit our offline stall every Sunday in Chhatarpur, New Delhi.','प्रश्न, साझेदारी या थोक आवश्यकताएँ?':'Questions, partnerships or bulk requirements?',
   'कैरोसेल रोकें':'Pause carousel','कैरोसेल चलाएँ':'Play carousel',
   'एक स्वयं सहायता समूह पहल':'A Self Help Group Initiative','सभी उत्पाद':'All Products','हमारी पूरी उत्पाद श्रृंखला देखें':'Explore our complete product range','खेत में उगाई आवश्यक वस्तुएँ':'Farm-grown essentials','उपलब्ध विकल्प':'Available options','उत्पाद के बारे में पूछताछ करें':'Enquire about product','उत्पाद लोड नहीं किए जा सके।':'Products could not be loaded.',
   'संपर्क करें':'Contact Us','खेत से ताज़ा • पीएसी ब्रांडेड':'Farm fresh • PAC branded','उपलब्ध मात्राएँ':'Available quantities','व्हाट्सऐप पर पूछताछ करें':'Enquire on WhatsApp',
@@ -271,9 +297,10 @@ function setLanguage(language) {
   document.querySelectorAll('.brand small').forEach((descriptor) => descriptor.remove());
   document.documentElement.lang = language;
   const pageTitles = {
-    'pac-cooperative.html': ['PAC Cooperative | PROUT Agro Commodity', 'पीएसी सहकारिता | PROUT Agro Commodity'],
-    'prout-philosophy.html': ['PROUT Philosophy | PROUT Agro Commodity', 'प्राउट दर्शन | PROUT Agro Commodity'],
+    'pac-cooperative.html': ['About PAC | PROUT Agro Commodity', 'पीएसी के बारे में | PROUT Agro Commodity'],
+    'prout-philosophy.html': ['Prout Cooperatives | PROUT Agro Commodity', 'प्राउट सहकारिताएँ | PROUT Agro Commodity'],
     'our-members.html': ['Our Members | PROUT Agro Commodity', 'हमारे सदस्य | PROUT Agro Commodity'],
+    'contact.html': ['Contact Us | PROUT Agro Commodity', 'संपर्क करें | PROUT Agro Commodity'],
     'about.html': ['About | PROUT Agro Commodity', 'परिचय | PROUT Agro Commodity']
   };
   const fileName = location.pathname.split('/').pop() || 'index.html';
