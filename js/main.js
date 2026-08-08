@@ -219,10 +219,22 @@ document.querySelectorAll('.contact-form').forEach((form) => form.addEventListen
   location.href = `mailto:hello@proutagro.com?subject=${subject}&body=${body}`;
 }));
 
-const sizeMap = { minus: '22.5px', reset: '24px', plus: '27px' };
+const sizeMap = { minus: '15px', reset: '16px', plus: '18px' };
 document.querySelectorAll('[data-size]').forEach((button) => button.addEventListener('click', () => {
   document.documentElement.style.fontSize = sizeMap[button.dataset.size];
 }));
+
+document.addEventListener('click', (event) => {
+  const button = event.target.closest('[data-flip-card]');
+  if (!button) return;
+  const card = button.closest('.member-flip-card');
+  if (!card) return;
+  const flipped = card.classList.toggle('is-flipped');
+  card.querySelector('.member-card-front').inert = flipped;
+  card.querySelector('.member-card-back').inert = !flipped;
+  card.querySelectorAll('[data-flip-card]').forEach((control) => control.setAttribute('aria-expanded', String(flipped)));
+});
+document.querySelectorAll('.member-card-back').forEach((face) => { face.inert = true; });
 
 document.querySelectorAll('.search').forEach((form) => form.addEventListener('submit', (event) => {
   event.preventDefault();
@@ -230,6 +242,7 @@ document.querySelectorAll('.search').forEach((form) => form.addEventListener('su
 }));
 
 const english = {
+  'हमारा समुदाय':'Our community','हमारे सदस्य':'Our Members','उन लोगों से मिलें जिनका अनुभव, सेवा और साझा उद्देश्य PROUT Agro Commodity का मार्गदर्शन करते हैं।':'Meet the people whose experience, service and shared purpose guide PROUT Agro Commodity.','सदस्य श्रेणी A':'Member Category A','सदस्य श्रेणी B':'Member Category B','सदस्य श्रेणी C':'Member Category C','अध्यक्ष':'President','कोषाध्यक्ष':'Treasurer','मार्गदर्शक':'Guide','स्वयंसेवक':'Volunteer','उत्पादक सदस्य':'Producer Member','समन्वयक':'Coordinator','गुणवत्ता प्रमुख':'Quality Lead','समुदाय सहयोगी':'Community Partner','सचिव':'Secretary','संचालन प्रमुख':'Operations Lead','जनसंपर्क प्रमुख':'Outreach Lead','अधिक जानकारी':'More info','वापस':'Back','सदस्यता वर्ष':'Member since','भूमिका':'Role',
   'साथ मिलकर कार्यरत':'Together in action','हमारी सहकारिता के चेहरे':'Faces of our cooperative','साझा कार्य, साझा उद्देश्य और साझा प्रगति।':'Shared work, shared purpose and shared progress.',
   'प्राउट सहकारिताएँ':'Prout Cooperatives','पीएसी के बारे में':'About PAC','हमसे जुड़ें':'Join us','परिचय / प्राउट सहकारिताएँ':'About / Prout Cooperatives','परिचय / पीएसी के बारे में':'About / About PAC','प्राउट सहकारिताएँ क्या हैं?':'What are Prout Cooperatives?','पीएसी क्या है?':'What is PAC?','पीएसी किसानों और उत्पादकों को संसाधन, जिम्मेदारी और उपलब्धियाँ साझा करने के लिए एक मंच प्रदान करता है।':'PAC gives farmers and producers a platform to share resources, responsibility and achievement.','पीएसी से जुड़ें':'Join PAC',
   'मुखपृष्ठ / संपर्क करें':'Home / Contact Us','हमें आपसे बात करके खुशी होगी':'We would be glad to hear from you','संपर्क में आएँ':'Get in touch','हमारी टीम से सीधे बात करें':'Talk directly with our team','उत्पादों, सहकारी सदस्यता, साझेदारी या थोक आवश्यकताओं के बारे में हमसे संपर्क करें।':'Contact us about products, cooperative membership, partnerships or bulk requirements.','ईमेल':'Email','बातचीत शुरू करें':'Start a conversation','ईमेल भेजें':'Send an email','नाम':'Name','फ़ोन':'Phone','संदेश':'Message','हमारे स्थान':'Our locations','PROUT Agro Commodity पर आएँ':'Visit PROUT Agro Commodity','मुरादनगर मास्टर यूनिट':'Muradnagar Master Unit','मुरादनगर में हमारी उत्पादन और पैकेजिंग मास्टर यूनिट।':'Our production and packaging master unit in Muradnagar.','रविवार स्टॉल — छतरपुर':'Sunday Stall — Chhatarpur','हर रविवार छतरपुर, नई दिल्ली में हमारे ऑफलाइन स्टॉल पर आएँ।':'Visit our offline stall every Sunday in Chhatarpur, New Delhi.','प्रश्न, साझेदारी या थोक आवश्यकताएँ?':'Questions, partnerships or bulk requirements?',
