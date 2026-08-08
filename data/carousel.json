@@ -40,8 +40,8 @@
           "price": "₹100"
         }
       ],
-      "foregroundImage": "media/products/mustard-oil-fg-v2.png",
-      "backgroundImage": "media/products/mustard-oil-bg.png"
+      "foregroundImage": "media/products/pac_mustard-oil-fg-v2.png",
+      "backgroundImage": "media/products/pac_mustard-oil-bg.png"
     },
     {
       "id": "wheat",
@@ -67,8 +67,8 @@
           "price": "₹100"
         }
       ],
-      "foregroundImage": "media/products/wheat-fg.png",
-      "backgroundImage": "media/products/wheat-bg.png"
+      "foregroundImage": "media/products/pac_wheat-fg.png",
+      "backgroundImage": "media/products/pac_wheat-bg.png"
     },
     {
       "id": "black-wheat",
@@ -94,8 +94,8 @@
           "price": "₹100"
         }
       ],
-      "foregroundImage": "media/products/black-wheat-fg.png",
-      "backgroundImage": "media/products/black-wheat-bg.png"
+      "foregroundImage": "media/products/pac_black-wheat-fg.png",
+      "backgroundImage": "media/products/pac_black-wheat-bg.png"
     },
     {
       "id": "turmeric-powder",
@@ -121,8 +121,8 @@
           "price": "₹100"
         }
       ],
-      "foregroundImage": "media/products/turmeric-fg.png",
-      "backgroundImage": "media/products/turmeric-bg.png"
+      "foregroundImage": "media/products/pac_turmeric-fg.png",
+      "backgroundImage": "media/products/pac_turmeric-bg.png"
     },
     {
       "id": "heeng",
@@ -143,8 +143,8 @@
           "price": "₹100"
         }
       ],
-      "foregroundImage": "media/products/heeng-fg.png",
-      "backgroundImage": "media/products/heeng-bg.png"
+      "foregroundImage": "media/products/pac_heeng-fg.png",
+      "backgroundImage": "media/products/pac_heeng-bg.png"
     },
     {
       "id": "white-salt",
@@ -170,8 +170,8 @@
           "price": "₹100"
         }
       ],
-      "foregroundImage": "media/products/white-salt-fg.png",
-      "backgroundImage": "media/products/white-salt-bg.png"
+      "foregroundImage": "media/products/pac_white-salt-fg.png",
+      "backgroundImage": "media/products/pac_white-salt-bg.png"
     },
     {
       "id": "dhaniya-powder",
@@ -197,8 +197,8 @@
           "price": "₹100"
         }
       ],
-      "foregroundImage": "media/products/dhaniya-fg.png",
-      "backgroundImage": "media/products/dhaniya-bg.png"
+      "foregroundImage": "media/products/pac_dhaniya-fg.png",
+      "backgroundImage": "media/products/pac_dhaniya-bg.png"
     },
     {
       "id": "gur",
@@ -224,8 +224,8 @@
           "price": "₹100"
         }
       ],
-      "foregroundImage": "media/products/gur-fg.png",
-      "backgroundImage": "media/products/gur-bg.png"
+      "foregroundImage": "media/products/pac_gur-fg.png",
+      "backgroundImage": "media/products/pac_gur-bg.png"
     }
   ]
 }
