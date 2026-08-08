@@ -84,7 +84,7 @@ if (navButton && navigation) {
 const pageHeroImages = {
   'pac-cooperative.html': '../media/pages/pac-cooperative-hero.png',
   'prout-philosophy.html': '../media/pages/prout-philosophy-hero.png',
-  'our-members.html': '../media/pages/our-members-hero.png',
+  'our-members.html': '../media/members/members-05.jpeg',
   'contact.html': '../media/pages/pac-cooperative-hero.png'
 };
 const currentFile = location.pathname.split('/').pop() || 'index.html';
@@ -230,6 +230,7 @@ document.querySelectorAll('.search').forEach((form) => form.addEventListener('su
 }));
 
 const english = {
+  'साथ मिलकर कार्यरत':'Together in action','हमारी सहकारिता के चेहरे':'Faces of our cooperative','साझा कार्य, साझा उद्देश्य और साझा प्रगति।':'Shared work, shared purpose and shared progress.',
   'प्राउट सहकारिताएँ':'Prout Cooperatives','पीएसी के बारे में':'About PAC','हमसे जुड़ें':'Join us','परिचय / प्राउट सहकारिताएँ':'About / Prout Cooperatives','परिचय / पीएसी के बारे में':'About / About PAC','प्राउट सहकारिताएँ क्या हैं?':'What are Prout Cooperatives?','पीएसी क्या है?':'What is PAC?','पीएसी किसानों और उत्पादकों को संसाधन, जिम्मेदारी और उपलब्धियाँ साझा करने के लिए एक मंच प्रदान करता है।':'PAC gives farmers and producers a platform to share resources, responsibility and achievement.','पीएसी से जुड़ें':'Join PAC',
   'मुखपृष्ठ / संपर्क करें':'Home / Contact Us','हमें आपसे बात करके खुशी होगी':'We would be glad to hear from you','संपर्क में आएँ':'Get in touch','हमारी टीम से सीधे बात करें':'Talk directly with our team','उत्पादों, सहकारी सदस्यता, साझेदारी या थोक आवश्यकताओं के बारे में हमसे संपर्क करें।':'Contact us about products, cooperative membership, partnerships or bulk requirements.','ईमेल':'Email','बातचीत शुरू करें':'Start a conversation','ईमेल भेजें':'Send an email','नाम':'Name','फ़ोन':'Phone','संदेश':'Message','हमारे स्थान':'Our locations','PROUT Agro Commodity पर आएँ':'Visit PROUT Agro Commodity','मुरादनगर मास्टर यूनिट':'Muradnagar Master Unit','मुरादनगर में हमारी उत्पादन और पैकेजिंग मास्टर यूनिट।':'Our production and packaging master unit in Muradnagar.','रविवार स्टॉल — छतरपुर':'Sunday Stall — Chhatarpur','हर रविवार छतरपुर, नई दिल्ली में हमारे ऑफलाइन स्टॉल पर आएँ।':'Visit our offline stall every Sunday in Chhatarpur, New Delhi.','प्रश्न, साझेदारी या थोक आवश्यकताएँ?':'Questions, partnerships or bulk requirements?',
   'कैरोसेल रोकें':'Pause carousel','कैरोसेल चलाएँ':'Play carousel',
