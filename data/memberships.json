@@ -1,46 +1,47 @@
 [
   {
-    "name": "Volunteer Member",
-    "name_hi": "स्वयंसेवक सदस्य",
-    "responsibilities": "Participating in meetings, stall support and cooperative activities.",
-    "responsibilities_hi": "बैठकों में भाग लेना, स्टॉल सहयोग और सहकारी गतिविधियाँ।",
-    "benefits": "Profit sharing and 10% discount on products.",
-    "benefits_hi": "लाभ में भागीदारी और उत्पादों पर 10% छूट।",
-    "price": "₹5,500",
-    "period": "year",
-    "period_hi": "वर्ष"
+    "name": "Pattern Membership",
+    "name_hi": "पैटर्न सदस्यता",
+    "responsibilities": "Lead the cooperative, manage important operations, conduct meetings and help decide its direction and major decisions.",
+    "responsibilities_hi": "सहकारिता का नेतृत्व करना, महत्वपूर्ण संचालन संभालना, बैठकें आयोजित करना और दिशा व बड़े निर्णय तय करने में सहयोग देना।",
+    "benefits": "Eligible to contest leadership elections, profit sharing, right to buy cooperative shares and 10% discount on products.",
+    "benefits_hi": "नेतृत्व पदों के चुनाव लड़ने की पात्रता, लाभ में भागीदारी, सहकारी शेयर खरीदने का अधिकार और उत्पादों पर 10% छूट।",
+    "price": "₹10,000",
+    "period": "one-time fee",
+    "period_hi": "एकमुश्त शुल्क"
   },
   {
-    "name": "Producer Member",
-    "name_hi": "उत्पादक सदस्य",
-    "responsibilities": "Responsible cultivation, produce contribution and quality coordination.",
-    "responsibilities_hi": "जिम्मेदार खेती, उपज योगदान और गुणवत्ता समन्वय।",
-    "benefits": "Market access, profit sharing and 10% discount on products.",
-    "benefits_hi": "बाजार तक पहुँच, लाभ में भागीदारी और उत्पादों पर 10% छूट।",
-    "price": "₹7,500",
-    "period": "year",
-    "period_hi": "वर्ष"
+    "name": "General Membership",
+    "name_hi": "सामान्य सदस्यता",
+    "responsibilities": "Support executive and management work, operate stalls, guide workers and volunteers, contribute in meetings and complete assigned tasks.",
+    "responsibilities_hi": "कार्यकारी और प्रबंधन कार्यों में सहयोग देना, स्टॉल चलाना, श्रमिकों व स्वयंसेवकों का मार्गदर्शन करना, बैठकों में योगदान देना और दिए गए कार्य पूरे करना।",
+    "benefits": "Profit sharing, right to buy cooperative shares and 10% discount on products.",
+    "benefits_hi": "लाभ में भागीदारी, सहकारी शेयर खरीदने का अधिकार और उत्पादों पर 10% छूट।",
+    "price": "₹5,000",
+    "period": "one-time fee",
+    "period_hi": "एकमुश्त शुल्क"
   },
   {
-    "name": "Processing Member",
-    "name_hi": "प्रसंस्करण सदस्य",
-    "responsibilities": "Supporting cleaning, processing, packaging and quality oversight.",
-    "responsibilities_hi": "सफाई, प्रसंस्करण, पैकेजिंग और गुणवत्ता निरीक्षण में सहयोग।",
-    "benefits": "Skill development, profit sharing and 10% discount on products.",
-    "benefits_hi": "कौशल विकास, लाभ में भागीदारी और उत्पादों पर 10% छूट।",
-    "price": "₹6,500",
-    "period": "year",
-    "period_hi": "वर्ष"
+    "name": "Consumer Membership",
+    "name_hi": "उपभोक्ता सदस्यता",
+    "responsibilities": "Buy PAC products regularly and help promote them among family, friends and the community.",
+    "responsibilities_hi": "पीएसी उत्पाद नियमित रूप से खरीदना और परिवार, मित्रों व समुदाय के बीच उनका प्रचार करना।",
+    "benefits": "10% discount on products.",
+    "benefits_hi": "उत्पादों पर 10% छूट।",
+    "price": "₹600",
+    "period": "annual fee",
+    "period_hi": "वार्षिक शुल्क"
   },
   {
-    "name": "Supporter Member",
-    "name_hi": "सहयोगी सदस्य",
-    "responsibilities": "Community outreach, event assistance and cooperative promotion.",
-    "responsibilities_hi": "सामुदायिक संपर्क, आयोजन सहयोग और सहकारिता का प्रचार।",
-    "benefits": "Member updates, event participation and 10% discount on products.",
-    "benefits_hi": "सदस्य समाचार, आयोजनों में भागीदारी और उत्पादों पर 10% छूट।",
-    "price": "₹3,500",
-    "period": "year",
-    "period_hi": "वर्ष"
+    "name": "Workers / Volunteers",
+    "name_hi": "श्रमिक / स्वयंसेवक",
+    "responsibilities": "Carry out assigned work such as stall support, packing, distribution, outreach or other operational tasks.",
+    "responsibilities_hi": "स्टॉल सहयोग, पैकिंग, वितरण, प्रचार या अन्य संचालन से जुड़े दिए गए कार्य करना।",
+    "benefits": "This is not a membership. Workers are paid according to the type of work they perform.",
+    "benefits_hi": "यह सदस्यता नहीं है। श्रमिकों को उनके काम के प्रकार के अनुसार भुगतान दिया जाता है।",
+    "price": "No fee",
+    "price_hi": "कोई शुल्क नहीं",
+    "period": "",
+    "period_hi": ""
   }
 ]

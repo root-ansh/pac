@@ -229,7 +229,8 @@ if (membershipTables.length) {
           bindJsonText(cells[0], membership.name, membership.name_hi);
           bindJsonText(cells[1], membership.responsibilities, membership.responsibilities_hi);
           bindJsonText(cells[2], membership.benefits, membership.benefits_hi);
-          bindJsonText(cells[3].querySelector('strong'), membership.price, membership.price);
+          bindJsonText(cells[3].querySelector('strong'), membership.price, membership.price_hi || membership.price);
+          if (!membership.period) cells[3].querySelector('i').remove();
           bindJsonText(cells[3].querySelector('.membership-charge>span'), membership.period, membership.period_hi);
           body.append(row);
         });
