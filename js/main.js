@@ -1,4 +1,6 @@
 const navButton = document.querySelector('.nav-toggle');
+const WHATSAPP_NUMBER = '919582562253';
+const whatsappLink = (message) => `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
 const navigation = document.querySelector('.site-nav');
 const navigationBar = document.querySelector('.nav-wrap');
 const identityRow = document.querySelector('.identity-row');
@@ -25,11 +27,17 @@ if (navigation) {
   const currentPage = location.pathname.split('/').pop() || 'index.html';
   const contactActive = currentPage === 'contact.html';
   navigation.innerHTML = `
-    <a class="${currentPage === 'prout-philosophy.html' ? 'active' : ''}" href="${root}pages/prout-philosophy.html">Prout Cooperatives</a>
-    <a class="about-pac-link ${currentPage === 'pac-cooperative.html' ? 'active' : ''}" href="${root}pages/pac-cooperative.html"><span>About PAC</span><em class="join-us-badge">Join us</em></a>
-    <a class="${currentPage === 'our-members.html' ? 'active' : ''}" href="${root}pages/our-members.html">Our Members</a>
-    <a class="${contactActive ? 'active' : ''}" href="${root}pages/contact.html">Contact Us</a>`;
+    <a class="mobile-home-link nav-home ${currentPage === 'index.html' ? 'active' : ''}" href="${root}index.html">Home</a>
+    <a class="nav-prout ${currentPage === 'prout-philosophy.html' ? 'active' : ''}" href="${root}pages/prout-philosophy.html">Prout Cooperatives</a>
+    <a class="nav-pac about-pac-link ${currentPage === 'pac-cooperative.html' ? 'active' : ''}" href="${root}pages/pac-cooperative.html"><span>About PAC</span><em class="join-us-badge">Join us</em></a>
+    <a class="nav-members ${currentPage === 'our-members.html' ? 'active' : ''}" href="${root}pages/our-members.html">Our Members</a>
+    <a class="nav-contact ${contactActive ? 'active' : ''}" href="${root}pages/contact.html">Contact Us</a>`;
 }
+
+document.querySelectorAll('a[href*="api.whatsapp.com"],a[href*="wa.me"]').forEach((link) => {
+  const message = new URL(link.href).searchParams.get('text') || 'Hello PROUT Agro Commodity';
+  link.href = whatsappLink(message);
+});
 
 document.querySelectorAll('footer a').forEach((link) => {
   if (link.href.endsWith('/prout-philosophy.html')) link.textContent = 'Prout Cooperatives';
@@ -114,16 +122,17 @@ if (productCarousel) {
     .then((response) => { if (!response.ok) throw new Error('Carousel data could not be loaded.'); return response.json(); })
     .then(({ products, autoplayMs = 6500 }) => {
       products.forEach((product, index) => {
-        const enquiry = encodeURIComponent(`Hello PROUT Agro Commodity, I would like to enquire about ${product.title}. Please share availability and ordering details.`);
+        const enquiry = `Hello PROUT Agro Commodity, I would like to enquire about ${product.title}. Please share availability and ordering details.`;
         const slide = document.createElement('article');
         slide.className = `product-slide${index === 0 ? ' active' : ''}`;
         slide.setAttribute('aria-hidden', String(index !== 0));
-        slide.innerHTML = `<img class="slide-background" src="${product.backgroundImage}" alt="" loading="${index === 0 ? 'eager' : 'lazy'}"><div class="slide-overlay"></div><div class="container slide-layout"><div class="slide-copy"><p class="slide-eyebrow"></p><h1></h1><p class="slide-subtitle"></p><span class="availability-label"></span><div class="quantity-list">${product.quantities.map(({price})=>`<span><i class="quantity-weight"></i><b>${price}</b></span>`).join('')}</div><a class="whatsapp-button" href="https://api.whatsapp.com/send?text=${enquiry}" target="_blank" rel="noopener"><img src="media/whatsapp.svg" alt="" aria-hidden="true"><span class="enquiry-text"></span></a></div><img class="slide-product" src="${product.foregroundImage}" alt="PAC branded ${product.title} packaging" loading="${index === 0 ? 'eager' : 'lazy'}"></div>`;
+        slide.innerHTML = `<img class="slide-background" src="${product.backgroundImage}" alt="" loading="${index === 0 ? 'eager' : 'lazy'}"><div class="slide-overlay"></div><span class="member-discount-ribbon"></span><div class="container slide-layout"><div class="slide-copy"><p class="slide-eyebrow"></p><h1></h1><p class="slide-subtitle"></p><span class="availability-label"></span><div class="quantity-list">${product.quantities.map(({price})=>`<span><i class="quantity-weight"></i><b>${price}</b></span>`).join('')}</div><a class="whatsapp-button" href="${whatsappLink(enquiry)}" target="_blank" rel="noopener"><img src="media/whatsapp.svg" alt="" aria-hidden="true"><span class="enquiry-text"></span></a></div><img class="slide-product" src="${product.foregroundImage}" alt="PAC branded ${product.title} packaging" loading="${index === 0 ? 'eager' : 'lazy'}"></div>`;
         bindJsonText(slide.querySelector('.slide-eyebrow'), product.eyebrow, product.eyebrow_hi);
         bindJsonText(slide.querySelector('h1'), product.title, product.title_hi);
         bindJsonText(slide.querySelector('.slide-subtitle'), product.subtitle, product.subtitle_hi);
         bindJsonText(slide.querySelector('.availability-label'), product.availabilityLabel, product.availabilityLabel_hi);
         bindJsonText(slide.querySelector('.enquiry-text'), product.enquiryLabel, product.enquiryLabel_hi);
+        bindJsonText(slide.querySelector('.member-discount-ribbon'), 'Members: Upto 10% discount', 'सदस्य: 10% तक की छूट');
         slide.querySelectorAll('.quantity-weight').forEach((element, quantityIndex) => bindJsonText(element, product.quantities[quantityIndex].weight, product.quantities[quantityIndex].weight_hi));
         track.append(slide);
         const dot = document.createElement('button');
@@ -188,13 +197,14 @@ if (productsGrid) {
     .then((response) => { if (!response.ok) throw new Error('Product data could not be loaded.'); return response.json(); })
     .then(({ products }) => {
       products.forEach((product) => {
-        const enquiry = encodeURIComponent(`Hello PROUT Agro Commodity, I would like to enquire about ${product.name}. Please share availability and ordering details.`);
+        const enquiry = `Hello PROUT Agro Commodity, I would like to enquire about ${product.name}. Please share availability and ordering details.`;
         const card = document.createElement('article');
         card.className = 'product-card';
-        card.innerHTML = `<div class="product-card-image"><img src="${product.image}" alt="PAC branded ${product.name} packaging" loading="lazy"></div><div class="product-card-body"><h3></h3><span class="product-options-label"></span><div class="product-card-quantities">${product.quantities.map(({price})=>`<span><b class="quantity-weight"></b><small>${price}</small></span>`).join('')}</div><a class="product-enquire" href="https://api.whatsapp.com/send?text=${enquiry}" target="_blank" rel="noopener"><span class="enquire-icon" aria-hidden="true"><img class="enquire-icon-default" src="media/whatsapp.svg" alt=""><img class="enquire-icon-hover" src="media/whatsapp_black.svg" alt=""></span><span class="enquiry-text"></span></a></div>`;
+        card.innerHTML = `<div class="product-card-image"><span class="member-discount-ribbon"></span><img src="${product.image}" alt="PAC branded ${product.name} packaging" loading="lazy"></div><div class="product-card-body"><h3></h3><span class="product-options-label"></span><div class="product-card-quantities">${product.quantities.map(({price})=>`<span><b class="quantity-weight"></b><small>${price}</small></span>`).join('')}</div><a class="product-enquire" href="${whatsappLink(enquiry)}" target="_blank" rel="noopener"><span class="enquire-icon" aria-hidden="true"><img class="enquire-icon-default" src="media/whatsapp.svg" alt=""><img class="enquire-icon-hover" src="media/whatsapp_black.svg" alt=""></span><span class="enquiry-text"></span></a></div>`;
         bindJsonText(card.querySelector('h3'), product.name, product.name_hi);
         bindJsonText(card.querySelector('.product-options-label'), product.availabilityLabel, product.availabilityLabel_hi);
         bindJsonText(card.querySelector('.enquiry-text'), product.enquiryLabel, product.enquiryLabel_hi);
+        bindJsonText(card.querySelector('.member-discount-ribbon'), 'Members: Upto 10% discount', 'सदस्य: 10% तक की छूट');
         card.querySelectorAll('.quantity-weight').forEach((element, quantityIndex) => bindJsonText(element, product.quantities[quantityIndex].weight, product.quantities[quantityIndex].weight_hi));
         productsGrid.append(card);
       });
@@ -239,7 +249,7 @@ const english = {
   'हमारा समुदाय':'Our community','हमारे सदस्य':'Our Members','उन लोगों से मिलें जिनका अनुभव, सेवा और साझा उद्देश्य PROUT Agro Commodity का मार्गदर्शन करते हैं।':'Meet the people whose experience, service and shared purpose guide PROUT Agro Commodity.','सदस्य श्रेणी A':'Member Category A','सदस्य श्रेणी B':'Member Category B','सदस्य श्रेणी C':'Member Category C','अध्यक्ष':'President','कोषाध्यक्ष':'Treasurer','मार्गदर्शक':'Guide','स्वयंसेवक':'Volunteer','उत्पादक सदस्य':'Producer Member','समन्वयक':'Coordinator','गुणवत्ता प्रमुख':'Quality Lead','समुदाय सहयोगी':'Community Partner','सचिव':'Secretary','संचालन प्रमुख':'Operations Lead','जनसंपर्क प्रमुख':'Outreach Lead','अधिक जानकारी':'More info','वापस':'Back','सदस्यता वर्ष':'Member since','भूमिका':'Role',
   'साथ मिलकर कार्यरत':'Together in action','हमारी सहकारिता के चेहरे':'Faces of our cooperative','साझा कार्य, साझा उद्देश्य और साझा प्रगति।':'Shared work, shared purpose and shared progress.',
   'प्राउट सहकारिताएँ':'Prout Cooperatives','पीएसी के बारे में':'About PAC','हमसे जुड़ें':'Join us','परिचय / प्राउट सहकारिताएँ':'About / Prout Cooperatives','परिचय / पीएसी के बारे में':'About / About PAC','प्राउट सहकारिताएँ क्या हैं?':'What are Prout Cooperatives?','पीएसी क्या है?':'What is PAC?','पीएसी किसानों और उत्पादकों को संसाधन, जिम्मेदारी और उपलब्धियाँ साझा करने के लिए एक मंच प्रदान करता है।':'PAC gives farmers and producers a platform to share resources, responsibility and achievement.','पीएसी से जुड़ें':'Join PAC',
-  'मुखपृष्ठ / संपर्क करें':'Home / Contact Us','हमें आपसे बात करके खुशी होगी':'We would be glad to hear from you','संपर्क में आएँ':'Get in touch','हमारी टीम से सीधे बात करें':'Talk directly with our team','उत्पादों, सहकारी सदस्यता, साझेदारी या थोक आवश्यकताओं के बारे में हमसे संपर्क करें।':'Contact us about products, cooperative membership, partnerships or bulk requirements.','ईमेल':'Email','बातचीत शुरू करें':'Start a conversation','ईमेल भेजें':'Send an email','नाम':'Name','फ़ोन':'Phone','संदेश':'Message','हमारे स्थान':'Our locations','PROUT Agro Commodity पर आएँ':'Visit PROUT Agro Commodity','मुरादनगर मास्टर यूनिट':'Muradnagar Master Unit','मुरादनगर में हमारी उत्पादन और पैकेजिंग मास्टर यूनिट।':'Our production and packaging master unit in Muradnagar.','रविवार स्टॉल — छतरपुर':'Sunday Stall — Chhatarpur','हर रविवार छतरपुर, नई दिल्ली में हमारे ऑफलाइन स्टॉल पर आएँ।':'Visit our offline stall every Sunday in Chhatarpur, New Delhi.','प्रश्न, साझेदारी या थोक आवश्यकताएँ?':'Questions, partnerships or bulk requirements?',
+  'मुखपृष्ठ / संपर्क करें':'Home / Contact Us','हमें आपसे बात करके खुशी होगी':'We would be glad to hear from you','संपर्क में आएँ':'Get in touch','हमारी टीम से सीधे बात करें':'Talk directly with our team','उत्पादों, सहकारी सदस्यता, साझेदारी या थोक आवश्यकताओं के बारे में हमसे संपर्क करें।':'Contact us about products, cooperative membership, partnerships or bulk requirements.','ईमेल':'Email','बातचीत शुरू करें':'Start a conversation','ईमेल भेजें':'Send an email','नाम':'Name','फ़ोन':'Phone','संदेश':'Message','हमारे स्थान':'Our locations','PROUT Agro Commodity पर आएँ':'Visit PROUT Agro Commodity','आनंद मार्ग मास्टर यूनिट — मुरादनगर':'Ananda Marga Master Unit — Muradnagar','मुरादनगर, उत्तर प्रदेश में हमारी उत्पादन और पैकेजिंग मास्टर यूनिट।':'Our production and packaging master unit in Muradnagar, Uttar Pradesh.','मधुकानन बाबा क्वार्टर — गदाईपुर':'Madhukanan Baba Quarter — Gadaipur','मधुकानन फार्म, गदाईपुर, नई दिल्ली में हमारा सामुदायिक स्थान।':'Our community location at Madhukanan Farm, Gadaipur, New Delhi.','प्रश्न, साझेदारी या थोक आवश्यकताएँ?':'Questions, partnerships or bulk requirements?',
   'कैरोसेल रोकें':'Pause carousel','कैरोसेल चलाएँ':'Play carousel',
   'एक स्वयं सहायता समूह पहल':'A Self Help Group Initiative','सभी उत्पाद':'All Products','हमारी पूरी उत्पाद श्रृंखला देखें':'Explore our complete product range','खेत में उगाई आवश्यक वस्तुएँ':'Farm-grown essentials','उपलब्ध विकल्प':'Available options','उत्पाद के बारे में पूछताछ करें':'Enquire about product','उत्पाद लोड नहीं किए जा सके।':'Products could not be loaded.',
   'संपर्क करें':'Contact Us','खेत से ताज़ा • पीएसी ब्रांडेड':'Farm fresh • PAC branded','उपलब्ध मात्राएँ':'Available quantities','व्हाट्सऐप पर पूछताछ करें':'Enquire on WhatsApp',
