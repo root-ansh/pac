@@ -1,15 +1,5 @@
 {
   "hero": {"breadcrumb":"About / Our Members","breadcrumb_hi":"परिचय / हमारे सदस्य","title":"Our Members","title_hi":"हमारे सदस्य","subtitle":"Our people, our strength","subtitle_hi":"हमारे लोग, हमारी शक्ति","backgroundImage":"media/members/members-05.jpeg"},
-  "gallery": {
-    "eyebrow":"Together in action","eyebrow_hi":"साथ मिलकर कार्यरत","title":"Faces of our cooperative","title_hi":"हमारी सहकारिता के चेहरे","description":"Shared work, shared purpose and shared progress.","description_hi":"साझा कार्य, साझा उद्देश्य और साझा प्रगति।",
-    "items":[
-      {"image":"media/members/members-02.jpeg","orientation":"portrait","alt":"PROUT Agro Commodity members gathered indoors","title":"Lorem ipsum dolor","title_hi":"सदस्यों की साझा पहल","caption":"Lorem ipsum dolor sit amet.","caption_hi":"सहयोग और सेवा की एक झलक।"},
-      {"image":"media/members/members-02.jpeg","orientation":"portrait","alt":"Members standing with PAC products","title":"Lorem ipsum dolor","title_hi":"सदस्यों की साझा पहल","caption":"Lorem ipsum dolor sit amet.","caption_hi":"सहयोग और सेवा की एक झलक।"},
-      {"image":"media/members/members-03.jpeg","orientation":"portrait","alt":"Members presenting PAC produce outdoors","title":"Lorem ipsum dolor","title_hi":"सदस्यों की साझा पहल","caption":"Lorem ipsum dolor sit amet.","caption_hi":"सहयोग और सेवा की एक झलक।"},
-      {"image":"media/members/members-04.jpeg","orientation":"landscape","alt":"PAC members together around a product stall","title":"Lorem ipsum dolor","title_hi":"सदस्यों की साझा पहल","caption":"Lorem ipsum dolor sit amet.","caption_hi":"सहयोग और सेवा की एक झलक।"},
-      {"image":"media/members/members-05.jpeg","orientation":"landscape","alt":"PAC cooperative group portrait","title":"Lorem ipsum dolor","title_hi":"सदस्यों की साझा पहल","caption":"Lorem ipsum dolor sit amet.","caption_hi":"सहयोग और सेवा की एक झलक।"}
-    ]
-  },
   "join": {"eyebrow":"Become a member","eyebrow_hi":"सदस्य बनें","title":"Join PAC","title_hi":"पीएसी से जुड़ें","description":"Choose the membership that best matches how you would like to participate in and support the cooperative.","description_hi":"वह सदस्यता चुनें जो सहकारिता में आपकी भागीदारी और सहयोग के तरीके से सबसे अच्छी तरह मेल खाती हो।","button":"Enquire for registration","button_hi":"पंजीकरण के लिए पूछताछ करें"},
   "directory": {
     "categories":[

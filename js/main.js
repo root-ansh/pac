@@ -86,7 +86,7 @@ if (navButton && navigation) {
 }
 
 const pageHeroImages = {
-  'pac-cooperative.html': '../media/pages/pac-cooperative-hero.png',
+  'pac-cooperative.html': '../media/gallery/gallery29.jpeg',
   'our-members.html': '../media/members/members-05.jpeg',
   'contact.html': '../media/pages/pac-cooperative-hero.png'
 };
@@ -307,22 +307,35 @@ if (aboutPage) {
 
 const membersPage = currentFile === 'our-members.html' ? document.querySelector('main') : null;
 if (membersPage) {
-  fetch(`${assetRoot}data/members.json`)
-    .then((response) => { if (!response.ok) throw new Error('Members page data could not be loaded.'); return response.json(); })
-    .then((content) => {
+  const membersHero = membersPage.querySelector('.page-banner');
+  const membersGallery = membersPage.querySelector('.members-gallery-section');
+  const membersJoin = membersPage.querySelector('.join-pac-section');
+  const membersDirectory = membersPage.querySelector('.members-directory');
+  membersHero.after(membersGallery, membersJoin, membersDirectory);
+  Promise.all([
+    fetch(`${assetRoot}data/members.json`).then((response) => { if (!response.ok) throw new Error('Members page data could not be loaded.'); return response.json(); }),
+    fetch(`${assetRoot}data/gallery.json`).then((response) => { if (!response.ok) throw new Error('Gallery data could not be loaded.'); return response.json(); })
+  ])
+    .then(([content, galleryContent]) => {
       const hero = membersPage.querySelector('.page-banner'); hero.style.backgroundImage = `url('${assetRoot}${content.hero.backgroundImage}')`;
       bindJsonText(hero.querySelector('p'), content.hero.breadcrumb, content.hero.breadcrumb_hi); bindJsonText(hero.querySelector('h1'), content.hero.title, content.hero.title_hi); bindJsonText(hero.querySelector('span'), content.hero.subtitle, content.hero.subtitle_hi);
       const gallery = membersPage.querySelector('.members-gallery-section');
-      bindJsonText(gallery.querySelector('.section-tag'), content.gallery.eyebrow, content.gallery.eyebrow_hi); bindJsonText(gallery.querySelector('h2'), content.gallery.title, content.gallery.title_hi); bindJsonText(gallery.querySelector('.gallery-heading>p:last-child'), content.gallery.description, content.gallery.description_hi);
-      const buildGallerySet = (duplicate = false) => {
+      bindJsonText(gallery.querySelector('.section-tag'), galleryContent.eyebrow, galleryContent.eyebrow_hi); bindJsonText(gallery.querySelector('h2'), galleryContent.title, galleryContent.title_hi); bindJsonText(gallery.querySelector('.gallery-heading>p:last-child'), galleryContent.description, galleryContent.description_hi);
+      const buildGallerySet = (items, duplicate = false) => {
         const set = document.createElement('div'); set.className = 'members-set'; if (duplicate) set.setAttribute('aria-hidden', 'true');
         const appendFigure = (item, parent) => { const figure = document.createElement('figure'); figure.className = `member-photo ${item.orientation}`; figure.innerHTML = `<img src="${assetRoot}${item.image}" alt="${duplicate ? '' : item.alt}"><figcaption><strong></strong><span></span></figcaption>`; bindJsonText(figure.querySelector('strong'), item.title, item.title_hi); bindJsonText(figure.querySelector('figcaption span'), item.caption, item.caption_hi); parent.append(figure); };
-        content.gallery.items.filter((item) => item.orientation !== 'landscape').forEach((item) => appendFigure(item, set));
-        const landscapes = content.gallery.items.filter((item) => item.orientation === 'landscape');
+        items.filter((item) => item.orientation !== 'landscape').forEach((item) => appendFigure(item, set));
+        const landscapes = items.filter((item) => item.orientation === 'landscape');
         for (let index = 0; index < landscapes.length; index += 2) { const pair = document.createElement('div'); pair.className = 'member-photo-pair'; landscapes.slice(index, index + 2).forEach((item) => appendFigure(item, pair)); set.append(pair); }
         return set;
       };
-      const track = gallery.querySelector('.members-track'); track.innerHTML = ''; track.append(buildGallerySet(), buildGallerySet(true));
+      const galleryStack = document.createElement('div'); galleryStack.className = 'members-marquee-stack';
+      [...new Set(galleryContent.items.map((item) => item.row || 1))].sort().forEach((rowNumber) => {
+        const rowItems = galleryContent.items.filter((item) => (item.row || 1) === rowNumber);
+        const marquee = document.createElement('div'); marquee.className = 'members-marquee gallery-marquee-row'; marquee.setAttribute('aria-label', `PROUT Agro Commodity gallery row ${rowNumber}`);
+        const track = document.createElement('div'); track.className = 'members-track'; track.append(buildGallerySet(rowItems), buildGallerySet(rowItems, true)); marquee.append(track); galleryStack.append(marquee);
+      });
+      gallery.querySelector('.members-marquee').replaceWith(galleryStack);
 
       const join = membersPage.querySelector('.join-pac-section');
       bindJsonText(join.querySelector('.section-tag'), content.join.eyebrow, content.join.eyebrow_hi); bindJsonText(join.querySelector('h2'), content.join.title, content.join.title_hi); bindJsonText(join.querySelector('.join-pac-heading>div>p:last-child'), content.join.description, content.join.description_hi); bindJsonText(join.querySelector('.join-pac-button span'), content.join.button, content.join.button_hi);
