@@ -1,0 +1,184 @@
+{
+  "hero": {
+    "backgroundImage": "media/pages/pac-cooperative-hero.png",
+    "breadcrumb": "Home / About Us",
+    "breadcrumb_hi": "मुखपृष्ठ / हमारे बारे में",
+    "eyebrow": "PROUT Agro Commodity",
+    "eyebrow_hi": "PROUT Agro Commodity",
+    "title": "A cooperative initiative growing since August 2021",
+    "title_hi": "अगस्त 2021 से आगे बढ़ती एक सहकारी पहल",
+    "paragraphs": [
+      {
+        "text": "PROUT Agro Commodity began under the initiative of Acharya Vimlananand Avadhuta with Mr A, Mrs B, Mrs C and other founding members.",
+        "text_hi": "PROUT Agro Commodity की शुरुआत आचार्य विमलानंद अवधूत की पहल पर श्री A, श्रीमती B, श्रीमती C और अन्य संस्थापक सदस्यों के साथ हुई।"
+      },
+      {
+        "text": "PAC sources wheat, oil and other produce from the Ananda Marga Master Unit at Muradnagar, uses supervised in-house or selected hygienic packaging, and supplies the community through Madhukanan Ashram in Chhatarpur.",
+        "text_hi": "पीएसी मुरादनगर स्थित आनंद मार्ग मास्टर यूनिट से गेहूँ, तेल और अन्य उपज प्राप्त करता है, अपनी निगरानी में आंतरिक या चुनी हुई स्वच्छ पैकेजिंग करवाता है और छतरपुर स्थित मधुकानन आश्रम के माध्यम से समुदाय तक पहुँचाता है।"
+      }
+    ],
+    "button": "Our Members",
+    "button_hi": "हमारे सदस्य",
+    "buttonUrl": "pages/our-members.html"
+  },
+  "join": {
+    "logo": "media/logo.png",
+    "logoAlt": "PROUT Agro Commodity logo",
+    "eyebrow": "Become a member",
+    "eyebrow_hi": "सदस्य बनें",
+    "title": "Join PAC",
+    "title_hi": "पीएसी से जुड़ें",
+    "description": "Choose the membership that best matches how you would like to participate in and support the cooperative.",
+    "description_hi": "वह सदस्यता चुनें जो सहकारिता में आपकी भागीदारी और सहयोग के तरीके से सबसे अच्छी तरह मेल खाती हो।",
+    "button": "Enquire for registration",
+    "button_hi": "पंजीकरण के लिए पूछताछ करें"
+  },
+  "process": {
+    "eyebrow": "How PAC works",
+    "eyebrow_hi": "पीएसी कैसे काम करता है",
+    "title": "A short and supervised supply chain",
+    "title_hi": "एक छोटी और निगरानी वाली आपूर्ति श्रृंखला",
+    "items": [
+      {
+        "title": "Responsible sourcing",
+        "title_hi": "जिम्मेदार स्रोत",
+        "description": "Raw materials are sourced from the Muradnagar Master Unit and known cooperative channels.",
+        "description_hi": "कच्चा माल मुरादनगर मास्टर यूनिट और परिचित सहकारी माध्यमों से लिया जाता है।",
+        "image": "media/members/members-03.jpeg",
+        "alt": "PAC members with agricultural produce"
+      },
+      {
+        "title": "Preparation",
+        "title_hi": "तैयारी",
+        "description": "Produce is cleaned, processed or prepared according to the needs of each product.",
+        "description_hi": "हर उत्पाद की आवश्यकता के अनुसार उपज की सफाई, प्रसंस्करण या तैयारी की जाती है।",
+        "image": "media/products/pac_wheat-fg.png",
+        "alt": "PAC packaged wheat product"
+      },
+      {
+        "title": "Hygienic packaging",
+        "title_hi": "स्वच्छ पैकेजिंग",
+        "description": "Packaging is handled in-house where possible and through carefully selected outside packers when required.",
+        "description_hi": "जहाँ संभव हो पैकेजिंग आंतरिक रूप से और आवश्यकता पड़ने पर सावधानी से चुने गए बाहरी पैकर्स द्वारा की जाती है।",
+        "image": "media/products/pac_mustard-oil-fg.png",
+        "alt": "PAC packaged mustard oil"
+      },
+      {
+        "title": "Community distribution",
+        "title_hi": "सामुदायिक वितरण",
+        "description": "Products reach consumers through direct enquiries and the Madhukanan Ashram location in Chhatarpur.",
+        "description_hi": "उत्पाद सीधे पूछताछ और छतरपुर स्थित मधुकानन आश्रम के माध्यम से उपभोक्ताओं तक पहुँचते हैं।",
+        "image": "media/members/members-04.jpeg",
+        "alt": "PAC members supporting product distribution"
+      }
+    ]
+  },
+  "quality": {
+    "image": "media/members/members-02.jpeg",
+    "imageAlt": "PAC members standing with packaged products",
+    "imageCaption": "Placeholder: in-house machinery and production photographs will be added here.",
+    "imageCaption_hi": "स्थानधारक: आंतरिक मशीनों और उत्पादन की तस्वीरें यहाँ जोड़ी जाएँगी।",
+    "eyebrow": "Hygiene and non-adulteration",
+    "eyebrow_hi": "स्वच्छता और मिलावट रहितता",
+    "title": "Care at every handling point",
+    "title_hi": "हर संभाल बिंदु पर सावधानी",
+    "description": "PAC’s operating aim is to keep products traceable, clean and free from adulteration through a limited number of supervised handling stages.",
+    "description_hi": "पीएसी का संचालन लक्ष्य कम और निगरानी वाले चरणों के माध्यम से उत्पादों को पहचान योग्य, स्वच्छ और मिलावट रहित रखना है।",
+    "items": [
+      {
+        "title": "Known source:",
+        "title_hi": "ज्ञात स्रोत:",
+        "text": "raw materials are procured through identified units and relationships.",
+        "text_hi": "कच्चा माल पहचानी हुई इकाइयों और संबंधों के माध्यम से खरीदा जाता है।"
+      },
+      {
+        "title": "Clean handling:",
+        "title_hi": "स्वच्छ संभाल:",
+        "text": "sorting, preparation and packing areas are expected to remain clean and suitable for food products.",
+        "text_hi": "छँटाई, तैयारी और पैकिंग क्षेत्र खाद्य उत्पादों के लिए साफ और उपयुक्त रखे जाते हैं।"
+      },
+      {
+        "title": "Packaging oversight:",
+        "title_hi": "पैकेजिंग निगरानी:",
+        "text": "in-house work is monitored directly; external packers are selected for hygiene and reliability.",
+        "text_hi": "आंतरिक कार्य की सीधी निगरानी होती है; बाहरी पैकर्स स्वच्छता और विश्वसनीयता के आधार पर चुने जाते हैं।"
+      },
+      {
+        "title": "Batch awareness:",
+        "title_hi": "बैच निरीक्षण:",
+        "text": "product and packaging observations are used to identify and correct quality issues.",
+        "text_hi": "उत्पाद और पैकेजिंग निरीक्षण से गुणवत्ता संबंधी समस्याओं को पहचाना और सुधारा जाता है।"
+      }
+    ]
+  },
+  "timeline": {
+    "eyebrow": "Our operations timeline",
+    "eyebrow_hi": "हमारी संचालन यात्रा",
+    "title": "From an initiative to a working supply chain",
+    "title_hi": "एक पहल से कार्यशील आपूर्ति श्रृंखला तक",
+    "items": [
+      {
+        "date": "August 2021",
+        "date_hi": "अगस्त 2021",
+        "title": "PAC begins",
+        "title_hi": "पीएसी की शुरुआत",
+        "text": "The initiative starts under Acharya Vimlananand Avadhuta with a small founding group.",
+        "text_hi": "आचार्य विमलानंद अवधूत के मार्गदर्शन में एक छोटे संस्थापक समूह के साथ पहल शुरू हुई।"
+      },
+      {
+        "date": "Foundation stage",
+        "date_hi": "आधार चरण",
+        "title": "Muradnagar sourcing",
+        "title_hi": "मुरादनगर से स्रोत",
+        "text": "Relationships are established for wheat, oil and other agricultural raw materials.",
+        "text_hi": "गेहूँ, तेल और अन्य कृषि कच्चे माल के लिए संबंध स्थापित किए गए।"
+      },
+      {
+        "date": "Operations stage",
+        "date_hi": "संचालन चरण",
+        "title": "Packaging capability",
+        "title_hi": "पैकेजिंग क्षमता",
+        "text": "In-house processes develop alongside selected hygienic external packing support.",
+        "text_hi": "चुनी हुई स्वच्छ बाहरी पैकिंग सहायता के साथ आंतरिक प्रक्रियाएँ विकसित हुईं।"
+      },
+      {
+        "date": "Today",
+        "date_hi": "आज",
+        "title": "Direct community access",
+        "title_hi": "सीधी सामुदायिक पहुँच",
+        "text": "PAC serves consumers through enquiries and distribution at Madhukanan Ashram, Chhatarpur.",
+        "text_hi": "पीएसी पूछताछ और मधुकानन आश्रम, छतरपुर में वितरण के माध्यम से उपभोक्ताओं की सेवा करता है।"
+      }
+    ]
+  },
+  "prout": {
+    "image": "media/ic_prout_transparent.png",
+    "imageAlt": "PROUT emblem",
+    "imageCaption": "Progressive Utilization Theory",
+    "eyebrow": "PROUT and PROUT Cooperatives",
+    "eyebrow_hi": "प्राउट और प्राउट सहकारिताएँ",
+    "title": "A brief introduction",
+    "title_hi": "संक्षिप्त परिचय",
+    "description": "PROUT is a socio-economic philosophy formulated by Prabhat Ranjan Sarkar. It advocates local economic planning, responsible utilisation of resources and cooperative enterprises in which members share ownership, decisions and benefits.",
+    "description_hi": "प्राउट प्रभात रंजन सरकार द्वारा प्रतिपादित एक सामाजिक-आर्थिक दर्शन है। यह स्थानीय आर्थिक योजना, संसाधनों के जिम्मेदार उपयोग और ऐसी सहकारी संस्थाओं का समर्थन करता है जहाँ सदस्य स्वामित्व, निर्णय और लाभ साझा करते हैं।",
+    "linksLabel": "Continue reading",
+    "linksLabel_hi": "आगे पढ़ें",
+    "links": [
+      {
+        "label": "Cooperative FAQ",
+        "label_hi": "सहकारिता प्रश्नोत्तर",
+        "url": "https://proutglobe.org/2001/09/faq-cooperatives/"
+      },
+      {
+        "label": "PROUT cooperatives",
+        "label_hi": "प्राउट की सहकारिताएँ",
+        "url": "https://proutglobe.org/2012/01/14678/"
+      },
+      {
+        "label": "About PROUT",
+        "label_hi": "प्राउट के बारे में",
+        "url": "https://en.wikipedia.org/wiki/Progressive_utilization_theory"
+      }
+    ]
+  }
+}

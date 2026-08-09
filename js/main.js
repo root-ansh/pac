@@ -239,6 +239,111 @@ if (membershipTables.length) {
     .catch((error) => console.error(error));
 }
 
+const aboutPage = document.querySelector('.about-us-main');
+if (aboutPage) {
+  fetch(`${assetRoot}data/about.json`)
+    .then((response) => { if (!response.ok) throw new Error('About page data could not be loaded.'); return response.json(); })
+    .then((content) => {
+      const hero = aboutPage.querySelector('.about-intro-hero');
+      hero.style.backgroundImage = `url('${assetRoot}${content.hero.backgroundImage}')`;
+      bindJsonText(hero.querySelector(':scope>.container>p'), content.hero.breadcrumb, content.hero.breadcrumb_hi);
+      bindJsonText(hero.querySelector('.about-intro-copy .section-tag'), content.hero.eyebrow, content.hero.eyebrow_hi);
+      bindJsonText(hero.querySelector('h1'), content.hero.title, content.hero.title_hi);
+      hero.querySelectorAll('.about-intro-copy>p:not(.section-tag)').forEach((paragraph, index) => bindJsonText(paragraph, content.hero.paragraphs[index]?.text, content.hero.paragraphs[index]?.text_hi));
+      const heroButton = hero.querySelector('.about-members-button');
+      heroButton.href = `${assetRoot}${content.hero.buttonUrl}`;
+      bindJsonText(heroButton.querySelector('span'), content.hero.button, content.hero.button_hi);
+
+      const join = aboutPage.querySelector('.join-pac-section');
+      const joinLogo = join.querySelector('.join-pac-logo');
+      joinLogo.src = `${assetRoot}${content.join.logo}`; joinLogo.alt = content.join.logoAlt;
+      bindJsonText(join.querySelector('.section-tag'), content.join.eyebrow, content.join.eyebrow_hi);
+      bindJsonText(join.querySelector('h2'), content.join.title, content.join.title_hi);
+      bindJsonText(join.querySelector('.join-pac-heading>div>p:last-child'), content.join.description, content.join.description_hi);
+      bindJsonText(join.querySelector('.join-pac-button span'), content.join.button, content.join.button_hi);
+
+      const process = aboutPage.querySelector('.pac-process');
+      bindJsonText(process.querySelector('.section-tag'), content.process.eyebrow, content.process.eyebrow_hi);
+      bindJsonText(process.querySelector('h2'), content.process.title, content.process.title_hi);
+      process.querySelectorAll('.pac-process-grid article').forEach((card, index) => {
+        const item = content.process.items[index]; if (!item) return;
+        const image = card.querySelector('img'); image.src = `${assetRoot}${item.image}`; image.alt = item.alt;
+        bindJsonText(card.querySelector('h3'), item.title, item.title_hi);
+        bindJsonText(card.querySelector('p'), item.description, item.description_hi);
+      });
+
+      const quality = aboutPage.querySelector('.quality-section');
+      const qualityImage = quality.querySelector('.quality-photo img'); qualityImage.src = `${assetRoot}${content.quality.image}`; qualityImage.alt = content.quality.imageAlt;
+      bindJsonText(quality.querySelector('.quality-photo span'), content.quality.imageCaption, content.quality.imageCaption_hi);
+      bindJsonText(quality.querySelector('.section-tag'), content.quality.eyebrow, content.quality.eyebrow_hi);
+      bindJsonText(quality.querySelector('h2'), content.quality.title, content.quality.title_hi);
+      bindJsonText(quality.querySelector('div>p:not(.section-tag)'), content.quality.description, content.quality.description_hi);
+      quality.querySelectorAll('li').forEach((itemElement, index) => {
+        const item = content.quality.items[index]; if (!item) return;
+        bindJsonText(itemElement.querySelector('strong'), item.title, item.title_hi);
+        const textNode = [...itemElement.childNodes].find((node) => node.nodeType === Node.TEXT_NODE);
+        if (textNode) { const span = document.createElement('span'); textNode.replaceWith(span); bindJsonText(span, item.text, item.text_hi); }
+      });
+
+      const timeline = aboutPage.querySelector('.operations-timeline');
+      bindJsonText(timeline.querySelector('.section-tag'), content.timeline.eyebrow, content.timeline.eyebrow_hi);
+      bindJsonText(timeline.querySelector('h2'), content.timeline.title, content.timeline.title_hi);
+      timeline.querySelectorAll('li').forEach((itemElement, index) => { const item = content.timeline.items[index]; if (!item) return; bindJsonText(itemElement.querySelector('span'), item.date, item.date_hi); bindJsonText(itemElement.querySelector('strong'), item.title, item.title_hi); bindJsonText(itemElement.querySelector('p'), item.text, item.text_hi); });
+
+      const prout = aboutPage.querySelector('.prout-story');
+      const proutImage = prout.querySelector('img'); proutImage.src = `${assetRoot}${content.prout.image}`; proutImage.alt = content.prout.imageAlt;
+      bindJsonText(prout.querySelector('.prout-emblem span'), content.prout.imageCaption, content.prout.imageCaption);
+      bindJsonText(prout.querySelector('.section-tag'), content.prout.eyebrow, content.prout.eyebrow_hi);
+      bindJsonText(prout.querySelector('h2'), content.prout.title, content.prout.title_hi);
+      bindJsonText(prout.querySelector('.prout-story-copy>p:not(.section-tag)'), content.prout.description, content.prout.description_hi);
+      const links = prout.querySelector('.about-source-links');
+      bindJsonText(links.querySelector('span'), content.prout.linksLabel, content.prout.linksLabel_hi);
+      links.querySelectorAll('a').forEach((link) => link.remove());
+      content.prout.links.forEach((item) => { const link = document.createElement('a'); link.href = item.url; link.target = '_blank'; link.rel = 'noopener'; bindJsonText(link, item.label, item.label_hi); links.append(link); });
+      setLanguage(sessionStorage.getItem('prout-language') || 'en');
+    })
+    .catch((error) => console.error(error));
+}
+
+const membersPage = currentFile === 'our-members.html' ? document.querySelector('main') : null;
+if (membersPage) {
+  fetch(`${assetRoot}data/members.json`)
+    .then((response) => { if (!response.ok) throw new Error('Members page data could not be loaded.'); return response.json(); })
+    .then((content) => {
+      const hero = membersPage.querySelector('.page-banner'); hero.style.backgroundImage = `url('${assetRoot}${content.hero.backgroundImage}')`;
+      bindJsonText(hero.querySelector('p'), content.hero.breadcrumb, content.hero.breadcrumb_hi); bindJsonText(hero.querySelector('h1'), content.hero.title, content.hero.title_hi); bindJsonText(hero.querySelector('span'), content.hero.subtitle, content.hero.subtitle_hi);
+      const gallery = membersPage.querySelector('.members-gallery-section');
+      bindJsonText(gallery.querySelector('.section-tag'), content.gallery.eyebrow, content.gallery.eyebrow_hi); bindJsonText(gallery.querySelector('h2'), content.gallery.title, content.gallery.title_hi); bindJsonText(gallery.querySelector('.gallery-heading>p:last-child'), content.gallery.description, content.gallery.description_hi);
+      const buildGallerySet = (duplicate = false) => {
+        const set = document.createElement('div'); set.className = 'members-set'; if (duplicate) set.setAttribute('aria-hidden', 'true');
+        const appendFigure = (item, parent) => { const figure = document.createElement('figure'); figure.className = `member-photo ${item.orientation}`; figure.innerHTML = `<img src="${assetRoot}${item.image}" alt="${duplicate ? '' : item.alt}"><figcaption><strong></strong><span></span></figcaption>`; bindJsonText(figure.querySelector('strong'), item.title, item.title_hi); bindJsonText(figure.querySelector('figcaption span'), item.caption, item.caption_hi); parent.append(figure); };
+        content.gallery.items.filter((item) => item.orientation !== 'landscape').forEach((item) => appendFigure(item, set));
+        const landscapes = content.gallery.items.filter((item) => item.orientation === 'landscape');
+        for (let index = 0; index < landscapes.length; index += 2) { const pair = document.createElement('div'); pair.className = 'member-photo-pair'; landscapes.slice(index, index + 2).forEach((item) => appendFigure(item, pair)); set.append(pair); }
+        return set;
+      };
+      const track = gallery.querySelector('.members-track'); track.innerHTML = ''; track.append(buildGallerySet(), buildGallerySet(true));
+
+      const join = membersPage.querySelector('.join-pac-section');
+      bindJsonText(join.querySelector('.section-tag'), content.join.eyebrow, content.join.eyebrow_hi); bindJsonText(join.querySelector('h2'), content.join.title, content.join.title_hi); bindJsonText(join.querySelector('.join-pac-heading>div>p:last-child'), content.join.description, content.join.description_hi); bindJsonText(join.querySelector('.join-pac-button span'), content.join.button, content.join.button_hi);
+
+      const directory = membersPage.querySelector('.members-directory'); directory.innerHTML = '';
+      content.directory.categories.forEach((category, categoryIndex) => {
+        const section = document.createElement('section'); section.className = 'member-category';
+        const heading = document.createElement('h3'); heading.id = `member-category-${categoryIndex + 1}`; bindJsonText(heading, category.name, category.name_hi); section.setAttribute('aria-labelledby', heading.id);
+        const grid = document.createElement('div'); grid.className = 'member-card-grid';
+        category.members.forEach((member) => {
+          const card = document.createElement('article'); card.className = 'member-flip-card';
+          card.innerHTML = `<div class="member-card-inner"><div class="member-card-face member-card-front"><img class="member-avatar" src="${assetRoot}${member.image}" alt="${member.name}"><h4></h4><p class="member-position"></p><button class="member-more" type="button" data-flip-card aria-expanded="false"></button></div><div class="member-card-face member-card-back"><h4></h4><dl><dt></dt><dd>${member.since}</dd><dt></dt><dd class="member-role"></dd></dl><p class="member-about"></p><button class="member-more" type="button" data-flip-card aria-expanded="false"></button></div></div>`;
+          card.querySelectorAll('h4').forEach((element) => bindJsonText(element, member.name, member.name_hi)); bindJsonText(card.querySelector('.member-position'), member.position, member.position_hi); bindJsonText(card.querySelector('.member-role'), member.position, member.position_hi); bindJsonText(card.querySelector('.member-about'), member.about, member.about_hi); bindJsonText(card.querySelectorAll('dt')[0], 'Member since', 'सदस्यता वर्ष'); bindJsonText(card.querySelectorAll('dt')[1], 'Role', 'भूमिका'); bindJsonText(card.querySelector('.member-card-front button'), 'More info', 'अधिक जानकारी'); bindJsonText(card.querySelector('.member-card-back button'), 'Back', 'वापस'); card.querySelector('.member-card-back').inert = true; grid.append(card);
+        });
+        section.append(heading, grid); directory.append(section);
+      });
+      setLanguage(sessionStorage.getItem('prout-language') || 'en');
+    })
+    .catch((error) => console.error(error));
+}
+
 document.querySelectorAll('.contact-form').forEach((form) => form.addEventListener('submit', (event) => {
   event.preventDefault();
   const data = new FormData(form);
