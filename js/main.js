@@ -307,11 +307,6 @@ if (aboutPage) {
 
 const membersPage = currentFile === 'our-members.html' ? document.querySelector('main') : null;
 if (membersPage) {
-  const membersHero = membersPage.querySelector('.page-banner');
-  const membersGallery = membersPage.querySelector('.members-gallery-section');
-  const membersJoin = membersPage.querySelector('.join-pac-section');
-  const membersDirectory = membersPage.querySelector('.members-directory');
-  membersHero.after(membersGallery, membersJoin, membersDirectory);
   Promise.all([
     fetch(`${assetRoot}data/members.json`).then((response) => { if (!response.ok) throw new Error('Members page data could not be loaded.'); return response.json(); }),
     fetch(`${assetRoot}data/gallery.json`).then((response) => { if (!response.ok) throw new Error('Gallery data could not be loaded.'); return response.json(); })
