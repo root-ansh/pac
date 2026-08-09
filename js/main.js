@@ -224,13 +224,13 @@ if (membershipTables.length) {
         body.innerHTML = '';
         memberships.forEach((membership) => {
           const row = document.createElement('tr');
-          row.innerHTML = '<th scope="row"></th><td></td><td></td><td><strong></strong> / <span></span></td>';
+          row.innerHTML = '<th scope="row"></th><td></td><td></td><td><span class="membership-charge"><strong></strong><i>/</i><span></span></span></td>';
           const cells = row.children;
           bindJsonText(cells[0], membership.name, membership.name_hi);
           bindJsonText(cells[1], membership.responsibilities, membership.responsibilities_hi);
           bindJsonText(cells[2], membership.benefits, membership.benefits_hi);
           bindJsonText(cells[3].querySelector('strong'), membership.price, membership.price);
-          bindJsonText(cells[3].querySelector('span'), membership.period, membership.period_hi);
+          bindJsonText(cells[3].querySelector('.membership-charge>span'), membership.period, membership.period_hi);
           body.append(row);
         });
       });

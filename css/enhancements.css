@@ -118,6 +118,8 @@
 .membership-table tbody td{font-size:.78rem;color:var(--muted)}
 .membership-table tbody td:last-child{white-space:nowrap;color:var(--ink)}
 .membership-table tbody td:last-child strong{color:var(--saffron);font-size:1.05rem}
+.membership-charge{display:inline-flex;align-items:baseline;gap:4px;white-space:nowrap}
+.membership-charge i{font-style:normal}
 .membership-table tbody tr:last-child>*{border-bottom:0}
 .membership-table tbody tr:hover{background:#fbf8f0}
 .prout-story{background:#fbfaf6}
