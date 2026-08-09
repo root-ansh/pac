@@ -1,0 +1,46 @@
+[
+  {
+    "name": "Volunteer Member",
+    "name_hi": "स्वयंसेवक सदस्य",
+    "responsibilities": "Participating in meetings, stall support and cooperative activities.",
+    "responsibilities_hi": "बैठकों में भाग लेना, स्टॉल सहयोग और सहकारी गतिविधियाँ।",
+    "benefits": "Profit sharing and 10% discount on products.",
+    "benefits_hi": "लाभ में भागीदारी और उत्पादों पर 10% छूट।",
+    "price": "₹5,500",
+    "period": "year",
+    "period_hi": "वर्ष"
+  },
+  {
+    "name": "Producer Member",
+    "name_hi": "उत्पादक सदस्य",
+    "responsibilities": "Responsible cultivation, produce contribution and quality coordination.",
+    "responsibilities_hi": "जिम्मेदार खेती, उपज योगदान और गुणवत्ता समन्वय।",
+    "benefits": "Market access, profit sharing and 10% discount on products.",
+    "benefits_hi": "बाजार तक पहुँच, लाभ में भागीदारी और उत्पादों पर 10% छूट।",
+    "price": "₹7,500",
+    "period": "year",
+    "period_hi": "वर्ष"
+  },
+  {
+    "name": "Processing Member",
+    "name_hi": "प्रसंस्करण सदस्य",
+    "responsibilities": "Supporting cleaning, processing, packaging and quality oversight.",
+    "responsibilities_hi": "सफाई, प्रसंस्करण, पैकेजिंग और गुणवत्ता निरीक्षण में सहयोग।",
+    "benefits": "Skill development, profit sharing and 10% discount on products.",
+    "benefits_hi": "कौशल विकास, लाभ में भागीदारी और उत्पादों पर 10% छूट।",
+    "price": "₹6,500",
+    "period": "year",
+    "period_hi": "वर्ष"
+  },
+  {
+    "name": "Supporter Member",
+    "name_hi": "सहयोगी सदस्य",
+    "responsibilities": "Community outreach, event assistance and cooperative promotion.",
+    "responsibilities_hi": "सामुदायिक संपर्क, आयोजन सहयोग और सहकारिता का प्रचार।",
+    "benefits": "Member updates, event participation and 10% discount on products.",
+    "benefits_hi": "सदस्य समाचार, आयोजनों में भागीदारी और उत्पादों पर 10% छूट।",
+    "price": "₹3,500",
+    "period": "year",
+    "period_hi": "वर्ष"
+  }
+]
