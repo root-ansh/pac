@@ -28,8 +28,7 @@ if (navigation) {
   const contactActive = currentPage === 'contact.html';
   navigation.innerHTML = `
     <a class="mobile-home-link nav-home ${currentPage === 'index.html' ? 'active' : ''}" href="${root}index.html">Home</a>
-    <a class="nav-prout ${currentPage === 'prout-philosophy.html' ? 'active' : ''}" href="${root}pages/prout-philosophy.html">Prout Cooperatives</a>
-    <a class="nav-pac about-pac-link ${currentPage === 'pac-cooperative.html' ? 'active' : ''}" href="${root}pages/pac-cooperative.html"><span>About PAC</span><em class="join-us-badge">Join us</em></a>
+    <a class="nav-pac about-pac-link ${currentPage === 'pac-cooperative.html' ? 'active' : ''}" href="${root}pages/pac-cooperative.html"><span>About Us</span><em class="join-us-badge">Join us</em></a>
     <a class="nav-members ${currentPage === 'our-members.html' ? 'active' : ''}" href="${root}pages/our-members.html">Our Members</a>
     <a class="nav-contact ${contactActive ? 'active' : ''}" href="${root}pages/contact.html">Contact Us</a>`;
 }
@@ -40,8 +39,11 @@ document.querySelectorAll('a[href*="api.whatsapp.com"],a[href*="wa.me"]').forEac
 });
 
 document.querySelectorAll('footer a').forEach((link) => {
-  if (link.href.endsWith('/prout-philosophy.html')) link.textContent = 'Prout Cooperatives';
-  if (link.href.endsWith('/pac-cooperative.html')) link.textContent = 'About PAC';
+  if (link.href.endsWith('/prout-philosophy.html')) {
+    link.href = `${insidePages ? '' : 'pages/'}pac-cooperative.html#prout-cooperatives`;
+    link.textContent = 'Prout Cooperatives';
+  }
+  if (link.href.endsWith('/pac-cooperative.html')) link.textContent = 'About Us';
   if (link.getAttribute('href')?.includes('#sampark')) {
     link.href = `${insidePages ? '' : 'pages/'}contact.html`;
     link.textContent = 'Contact Us';
@@ -85,7 +87,6 @@ if (navButton && navigation) {
 
 const pageHeroImages = {
   'pac-cooperative.html': '../media/pages/pac-cooperative-hero.png',
-  'prout-philosophy.html': '../media/pages/prout-philosophy-hero.png',
   'our-members.html': '../media/members/members-05.jpeg',
   'contact.html': '../media/pages/pac-cooperative-hero.png'
 };
@@ -94,11 +95,6 @@ const pageBanner = document.querySelector('.page-banner');
 if (pageBanner && pageHeroImages[currentFile]) {
   pageBanner.classList.add('generated-hero');
   pageBanner.style.backgroundImage = `url('${pageHeroImages[currentFile]}')`;
-}
-if (currentFile === 'prout-philosophy.html' && pageBanner) {
-  pageBanner.querySelector('p').textContent = 'About / Prout Cooperatives';
-  pageBanner.querySelector('h1').textContent = 'Prout Cooperatives';
-  document.querySelector('.info-copy .section-tag').textContent = 'What are Prout Cooperatives?';
 }
 
 const bindJsonText = (element, englishText, hindiText) => {
@@ -246,9 +242,10 @@ document.querySelectorAll('.search').forEach((form) => form.addEventListener('su
 }));
 
 const english = {
+  'सदस्य बनें':'Become a member','पीएसी से जुड़ें':'Join PAC','वह सदस्यता चुनें जो सहकारिता में आपकी भागीदारी और सहयोग के तरीके से सबसे अच्छी तरह मेल खाती हो।':'Choose the membership that best matches how you would like to participate in and support the cooperative.','पंजीकरण के लिए पूछताछ करें':'Enquire for registration','सदस्यता':'Membership','जिम्मेदारियाँ':'Responsibilities','लाभ':'Benefits','जिम्मेदारियाँ और लाभ':'Responsibilities & Benefits','वार्षिक सदस्यता शुल्क':'Annual subscription','स्वयंसेवक सदस्य':'Volunteer Member','उत्पादक सदस्य':'Producer Member','प्रसंस्करण सदस्य':'Processing Member','सहयोगी सदस्य':'Supporter Member','बैठकों में भाग लेना, स्टॉल सहयोग और सहकारी गतिविधियाँ।':'Participating in meetings, stall support and cooperative activities.','लाभ में भागीदारी और उत्पादों पर 10% छूट।':'Profit sharing and 10% discount on products.','जिम्मेदार खेती, उपज योगदान और गुणवत्ता समन्वय।':'Responsible cultivation, produce contribution and quality coordination.','बाजार तक पहुँच, लाभ में भागीदारी और उत्पादों पर 10% छूट।':'Market access, profit sharing and 10% discount on products.','सफाई, प्रसंस्करण, पैकेजिंग और गुणवत्ता निरीक्षण में सहयोग।':'Supporting cleaning, processing, packaging and quality oversight.','कौशल विकास, लाभ में भागीदारी और उत्पादों पर 10% छूट।':'Skill development, profit sharing and 10% discount on products.','सामुदायिक संपर्क, आयोजन सहयोग और सहकारिता का प्रचार।':'Community outreach, event assistance and cooperative promotion.','सदस्य समाचार, आयोजनों में भागीदारी और उत्पादों पर 10% छूट।':'Member updates, event participation and 10% discount on products.','प्रति वर्ष':'year',
   'हमारा समुदाय':'Our community','हमारे सदस्य':'Our Members','उन लोगों से मिलें जिनका अनुभव, सेवा और साझा उद्देश्य PROUT Agro Commodity का मार्गदर्शन करते हैं।':'Meet the people whose experience, service and shared purpose guide PROUT Agro Commodity.','सदस्य श्रेणी A':'Member Category A','सदस्य श्रेणी B':'Member Category B','सदस्य श्रेणी C':'Member Category C','अध्यक्ष':'President','कोषाध्यक्ष':'Treasurer','मार्गदर्शक':'Guide','स्वयंसेवक':'Volunteer','उत्पादक सदस्य':'Producer Member','समन्वयक':'Coordinator','गुणवत्ता प्रमुख':'Quality Lead','समुदाय सहयोगी':'Community Partner','सचिव':'Secretary','संचालन प्रमुख':'Operations Lead','जनसंपर्क प्रमुख':'Outreach Lead','अधिक जानकारी':'More info','वापस':'Back','सदस्यता वर्ष':'Member since','भूमिका':'Role',
   'साथ मिलकर कार्यरत':'Together in action','हमारी सहकारिता के चेहरे':'Faces of our cooperative','साझा कार्य, साझा उद्देश्य और साझा प्रगति।':'Shared work, shared purpose and shared progress.',
-  'प्राउट सहकारिताएँ':'Prout Cooperatives','पीएसी के बारे में':'About PAC','हमसे जुड़ें':'Join us','परिचय / प्राउट सहकारिताएँ':'About / Prout Cooperatives','परिचय / पीएसी के बारे में':'About / About PAC','प्राउट सहकारिताएँ क्या हैं?':'What are Prout Cooperatives?','पीएसी क्या है?':'What is PAC?','पीएसी किसानों और उत्पादकों को संसाधन, जिम्मेदारी और उपलब्धियाँ साझा करने के लिए एक मंच प्रदान करता है।':'PAC gives farmers and producers a platform to share resources, responsibility and achievement.','पीएसी से जुड़ें':'Join PAC',
+  'प्राउट सहकारिताएँ':'Prout Cooperatives','हमारे बारे में':'About Us','पीएसी के बारे में':'About PAC','हमसे जुड़ें':'Join us','परिचय / प्राउट सहकारिताएँ':'About / Prout Cooperatives','परिचय / पीएसी के बारे में':'About / About PAC','प्राउट सहकारिताएँ क्या हैं?':'What are Prout Cooperatives?','पीएसी क्या है?':'What is PAC?','पीएसी किसानों और उत्पादकों को संसाधन, जिम्मेदारी और उपलब्धियाँ साझा करने के लिए एक मंच प्रदान करता है।':'PAC gives farmers and producers a platform to share resources, responsibility and achievement.','पीएसी से जुड़ें':'Join PAC',
   'मुखपृष्ठ / संपर्क करें':'Home / Contact Us','हमें आपसे बात करके खुशी होगी':'We would be glad to hear from you','संपर्क में आएँ':'Get in touch','हमारी टीम से सीधे बात करें':'Talk directly with our team','उत्पादों, सहकारी सदस्यता, साझेदारी या थोक आवश्यकताओं के बारे में हमसे संपर्क करें।':'Contact us about products, cooperative membership, partnerships or bulk requirements.','ईमेल':'Email','बातचीत शुरू करें':'Start a conversation','ईमेल भेजें':'Send an email','नाम':'Name','फ़ोन':'Phone','संदेश':'Message','हमारे स्थान':'Our locations','PROUT Agro Commodity पर आएँ':'Visit PROUT Agro Commodity','आनंद मार्ग मास्टर यूनिट — मुरादनगर':'Ananda Marga Master Unit — Muradnagar','मुरादनगर, उत्तर प्रदेश में हमारी उत्पादन और पैकेजिंग मास्टर यूनिट।':'Our production and packaging master unit in Muradnagar, Uttar Pradesh.','मधुकानन बाबा क्वार्टर — गदाईपुर':'Madhukanan Baba Quarter — Gadaipur','मधुकानन फार्म, गदाईपुर, नई दिल्ली में हमारा सामुदायिक स्थान।':'Our community location at Madhukanan Farm, Gadaipur, New Delhi.','प्रश्न, साझेदारी या थोक आवश्यकताएँ?':'Questions, partnerships or bulk requirements?',
   'कैरोसेल रोकें':'Pause carousel','कैरोसेल चलाएँ':'Play carousel',
   'एक स्वयं सहायता समूह पहल':'A Self Help Group Initiative','सभी उत्पाद':'All Products','हमारी पूरी उत्पाद श्रृंखला देखें':'Explore our complete product range','खेत में उगाई आवश्यक वस्तुएँ':'Farm-grown essentials','उपलब्ध विकल्प':'Available options','उत्पाद के बारे में पूछताछ करें':'Enquire about product','उत्पाद लोड नहीं किए जा सके।':'Products could not be loaded.',
@@ -315,8 +312,7 @@ function setLanguage(language) {
   document.querySelectorAll('.brand small').forEach((descriptor) => descriptor.remove());
   document.documentElement.lang = language;
   const pageTitles = {
-    'pac-cooperative.html': ['About PAC | PROUT Agro Commodity', 'पीएसी के बारे में | PROUT Agro Commodity'],
-    'prout-philosophy.html': ['Prout Cooperatives | PROUT Agro Commodity', 'प्राउट सहकारिताएँ | PROUT Agro Commodity'],
+    'pac-cooperative.html': ['About Us | PROUT Agro Commodity', 'हमारे बारे में | PROUT Agro Commodity'],
     'our-members.html': ['Our Members | PROUT Agro Commodity', 'हमारे सदस्य | PROUT Agro Commodity'],
     'contact.html': ['Contact Us | PROUT Agro Commodity', 'संपर्क करें | PROUT Agro Commodity'],
     'about.html': ['About | PROUT Agro Commodity', 'परिचय | PROUT Agro Commodity']
