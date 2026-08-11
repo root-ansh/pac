@@ -356,11 +356,12 @@ if (membersPage) {
       bindJsonText(directoryHeading.querySelector('h2'), content.hero.title, content.hero.title_hi);
       bindJsonText(directoryHeading.querySelector('p'), content.hero.subtitle, content.hero.subtitle_hi);
       directory.append(directoryHeading);
-      content.directory.categories.forEach((category, categoryIndex) => {
+      const memberCategories = content.members || content.directory?.categories || [];
+      memberCategories.forEach((category, categoryIndex) => {
         const section = document.createElement('section'); section.className = 'member-category';
-        const heading = document.createElement('h3'); heading.id = `member-category-${categoryIndex + 1}`; bindJsonText(heading, category.name, category.name_hi); section.setAttribute('aria-labelledby', heading.id);
+        const heading = document.createElement('h3'); heading.id = `member-category-${categoryIndex + 1}`; bindJsonText(heading, category.category_title || category.name, category.category_title_hi || category.name_hi); section.setAttribute('aria-labelledby', heading.id);
         const grid = document.createElement('div'); grid.className = 'member-card-grid';
-        category.members.forEach((member) => {
+        (category.members || []).forEach((member) => {
           const card = document.createElement('article'); card.className = 'member-flip-card';
           card.innerHTML = `<div class="member-card-inner" data-flip-card role="button" tabindex="0" aria-expanded="false"><div class="member-card-face member-card-front"><img class="member-avatar" src="${assetRoot}${member.image}" alt="${member.name}"></div><div class="member-card-face member-card-back"><div class="member-card-back-copy"><dl><dt></dt><dd>${member.since}</dd></dl><p class="member-about"></p></div></div></div><div class="member-card-copy" data-flip-card role="button" tabindex="0" aria-expanded="false"><h4></h4><p class="member-position"></p><button class="member-more" type="button" data-flip-card aria-expanded="false"><span class="sr-only"></span></button></div>`;
           bindJsonText(card.querySelector('h4'), member.name, member.name_hi); bindJsonText(card.querySelector('.member-position'), member.position, member.position_hi); bindJsonText(card.querySelector('.member-about'), member.about, member.about_hi); bindJsonText(card.querySelector('dt'), 'Member since', 'सदस्यता वर्ष'); bindJsonText(card.querySelector('.member-more .sr-only'), 'More info', 'अधिक जानकारी'); card.querySelector('.member-card-back').setAttribute('aria-hidden', 'true'); grid.append(card);
