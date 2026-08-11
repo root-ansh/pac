@@ -44,7 +44,7 @@
         "title_hi": "जिम्मेदार स्रोत",
         "description": "Raw materials are sourced from the Muradnagar Master Unit and known cooperative channels.",
         "description_hi": "कच्चा माल मुरादनगर मास्टर यूनिट और परिचित सहकारी माध्यमों से लिया जाता है।",
-        "image": "media/members/members-03.jpeg",
+        "image": "media/members/member2.jpeg",
         "alt": "PAC members with agricultural produce"
       },
       {
@@ -68,13 +68,13 @@
         "title_hi": "सामुदायिक वितरण",
         "description": "Products reach consumers through direct enquiries and the Madhukanan Ashram location in Chhatarpur.",
         "description_hi": "उत्पाद सीधे पूछताछ और छतरपुर स्थित मधुकानन आश्रम के माध्यम से उपभोक्ताओं तक पहुँचते हैं।",
-        "image": "media/members/members-04.jpeg",
+        "image": "media/members/member3.jpeg",
         "alt": "PAC members supporting product distribution"
       }
     ]
   },
   "quality": {
-    "image": "media/members/members-02.jpeg",
+    "image": "media/members/member1.jpeg",
     "imageAlt": "PAC members standing with packaged products",
     "imageCaption": "Placeholder: in-house machinery and production photographs will be added here.",
     "imageCaption_hi": "स्थानधारक: आंतरिक मशीनों और उत्पादन की तस्वीरें यहाँ जोड़ी जाएँगी।",

@@ -87,7 +87,7 @@ if (navButton && navigation) {
 
 const pageHeroImages = {
   'pac-cooperative.html': '../media/gallery/gallery29.jpeg',
-  'our-members.html': '../media/members/members-05.jpeg',
+  'our-members.html': '../media/members/member8.jpeg',
   'contact.html': '../media/pages/pac-cooperative-hero.png'
 };
 const currentFile = location.pathname.split('/').pop() || 'index.html';
@@ -316,35 +316,54 @@ if (membersPage) {
       const hero = membersPage.querySelector('.page-banner'); hero.style.backgroundImage = `url('${assetRoot}${content.hero.backgroundImage}')`;
       bindJsonText(hero.querySelector('p'), content.hero.breadcrumb, content.hero.breadcrumb_hi); bindJsonText(hero.querySelector('h1'), content.hero.title, content.hero.title_hi); bindJsonText(hero.querySelector('span'), content.hero.subtitle, content.hero.subtitle_hi);
       const gallery = membersPage.querySelector('.members-gallery-section');
+      hero.after(gallery);
       bindJsonText(gallery.querySelector('.section-tag'), galleryContent.eyebrow, galleryContent.eyebrow_hi); bindJsonText(gallery.querySelector('h2'), galleryContent.title, galleryContent.title_hi); bindJsonText(gallery.querySelector('.gallery-heading>p:last-child'), galleryContent.description, galleryContent.description_hi);
       const buildGallerySet = (items, duplicate = false) => {
         const set = document.createElement('div'); set.className = 'members-set'; if (duplicate) set.setAttribute('aria-hidden', 'true');
         const appendFigure = (item, parent) => { const figure = document.createElement('figure'); figure.className = `member-photo ${item.orientation}`; figure.innerHTML = `<a class="member-photo-link" href="${assetRoot}${item.image}" target="_blank" rel="noopener"${duplicate ? ' tabindex="-1"' : ''}><img src="${assetRoot}${item.image}" alt="${duplicate ? '' : item.alt}"><figcaption><strong></strong><span></span></figcaption></a>`; bindJsonText(figure.querySelector('strong'), item.title, item.title_hi); bindJsonText(figure.querySelector('figcaption span'), item.caption, item.caption_hi); parent.append(figure); };
-        items.filter((item) => item.orientation !== 'landscape').forEach((item) => appendFigure(item, set));
+        const portraits = items.filter((item) => item.orientation !== 'landscape');
         const landscapes = items.filter((item) => item.orientation === 'landscape');
-        for (let index = 0; index < landscapes.length; index += 2) { const pair = document.createElement('div'); pair.className = 'member-photo-pair'; landscapes.slice(index, index + 2).forEach((item) => appendFigure(item, pair)); set.append(pair); }
+        for (let portraitIndex = 0, landscapeIndex = 0; portraitIndex < portraits.length || landscapeIndex < landscapes.length;) {
+          if (portraitIndex < portraits.length) {
+            appendFigure(portraits[portraitIndex], set);
+            portraitIndex += 1;
+          }
+          if (landscapeIndex >= landscapes.length) continue;
+          const pair = document.createElement('div');
+          pair.className = 'member-photo-pair';
+          appendFigure(landscapes[landscapeIndex], pair);
+          landscapeIndex += 1;
+          if (landscapeIndex < landscapes.length) {
+            appendFigure(landscapes[landscapeIndex], pair);
+            landscapeIndex += 1;
+          }
+          set.append(pair);
+        }
         return set;
       };
       const galleryStack = document.createElement('div'); galleryStack.className = 'members-marquee-stack';
-      [...new Set(galleryContent.items.map((item) => item.row || 1))].sort().forEach((rowNumber) => {
-        const rowItems = galleryContent.items.filter((item) => (item.row || 1) === rowNumber);
-        const marquee = document.createElement('div'); marquee.className = 'members-marquee gallery-marquee-row'; marquee.setAttribute('aria-label', `PROUT Agro Commodity gallery row ${rowNumber}`);
-        const track = document.createElement('div'); track.className = 'members-track'; track.append(buildGallerySet(rowItems), buildGallerySet(rowItems, true)); marquee.append(track); galleryStack.append(marquee);
-      });
+      const marquee = document.createElement('div'); marquee.className = 'members-marquee gallery-marquee-row'; marquee.setAttribute('aria-label', 'PROUT Agro Commodity gallery row');
+      const track = document.createElement('div'); track.className = 'members-track'; track.append(buildGallerySet(galleryContent.items), buildGallerySet(galleryContent.items, true)); marquee.append(track); galleryStack.append(marquee);
       gallery.querySelector('.members-marquee').replaceWith(galleryStack);
 
       const join = membersPage.querySelector('.join-pac-section');
       bindJsonText(join.querySelector('.section-tag'), content.join.eyebrow, content.join.eyebrow_hi); bindJsonText(join.querySelector('h2'), content.join.title, content.join.title_hi); bindJsonText(join.querySelector('.join-pac-heading>div>p:last-child'), content.join.description, content.join.description_hi); bindJsonText(join.querySelector('.join-pac-button span'), content.join.button, content.join.button_hi);
 
       const directory = membersPage.querySelector('.members-directory'); directory.innerHTML = '';
+      const directoryHeading = document.createElement('div');
+      directoryHeading.className = 'members-directory-heading';
+      directoryHeading.innerHTML = '<h2 id="members-directory-title"></h2><p></p>';
+      bindJsonText(directoryHeading.querySelector('h2'), content.hero.title, content.hero.title_hi);
+      bindJsonText(directoryHeading.querySelector('p'), content.hero.subtitle, content.hero.subtitle_hi);
+      directory.append(directoryHeading);
       content.directory.categories.forEach((category, categoryIndex) => {
         const section = document.createElement('section'); section.className = 'member-category';
         const heading = document.createElement('h3'); heading.id = `member-category-${categoryIndex + 1}`; bindJsonText(heading, category.name, category.name_hi); section.setAttribute('aria-labelledby', heading.id);
         const grid = document.createElement('div'); grid.className = 'member-card-grid';
         category.members.forEach((member) => {
           const card = document.createElement('article'); card.className = 'member-flip-card';
-          card.innerHTML = `<div class="member-card-inner"><div class="member-card-face member-card-front"><img class="member-avatar" src="${assetRoot}${member.image}" alt="${member.name}"><h4></h4><p class="member-position"></p><button class="member-more" type="button" data-flip-card aria-expanded="false"></button></div><div class="member-card-face member-card-back"><h4></h4><dl><dt></dt><dd>${member.since}</dd><dt></dt><dd class="member-role"></dd></dl><p class="member-about"></p><button class="member-more" type="button" data-flip-card aria-expanded="false"></button></div></div>`;
-          card.querySelectorAll('h4').forEach((element) => bindJsonText(element, member.name, member.name_hi)); bindJsonText(card.querySelector('.member-position'), member.position, member.position_hi); bindJsonText(card.querySelector('.member-role'), member.position, member.position_hi); bindJsonText(card.querySelector('.member-about'), member.about, member.about_hi); bindJsonText(card.querySelectorAll('dt')[0], 'Member since', 'सदस्यता वर्ष'); bindJsonText(card.querySelectorAll('dt')[1], 'Role', 'भूमिका'); bindJsonText(card.querySelector('.member-card-front button'), 'More info', 'अधिक जानकारी'); bindJsonText(card.querySelector('.member-card-back button'), 'Back', 'वापस'); card.querySelector('.member-card-back').inert = true; grid.append(card);
+          card.innerHTML = `<div class="member-card-inner" data-flip-card role="button" tabindex="0" aria-expanded="false"><div class="member-card-face member-card-front"><img class="member-avatar" src="${assetRoot}${member.image}" alt="${member.name}"></div><div class="member-card-face member-card-back"><div class="member-card-back-copy"><dl><dt></dt><dd>${member.since}</dd></dl><p class="member-about"></p></div></div></div><div class="member-card-copy" data-flip-card role="button" tabindex="0" aria-expanded="false"><h4></h4><p class="member-position"></p><button class="member-more" type="button" data-flip-card aria-expanded="false"><span class="sr-only"></span></button></div>`;
+          bindJsonText(card.querySelector('h4'), member.name, member.name_hi); bindJsonText(card.querySelector('.member-position'), member.position, member.position_hi); bindJsonText(card.querySelector('.member-about'), member.about, member.about_hi); bindJsonText(card.querySelector('dt'), 'Member since', 'सदस्यता वर्ष'); bindJsonText(card.querySelector('.member-more .sr-only'), 'More info', 'अधिक जानकारी'); card.querySelector('.member-card-back').setAttribute('aria-hidden', 'true'); grid.append(card);
         });
         section.append(heading, grid); directory.append(section);
       });
@@ -418,17 +437,28 @@ document.querySelectorAll('[data-size]').forEach((button) => button.addEventList
   document.documentElement.style.fontSize = sizeMap[button.dataset.size];
 }));
 
+const toggleMemberCard = (control) => {
+  const card = control.closest('.member-flip-card');
+  if (!card) return;
+  const flipped = card.classList.toggle('is-flipped');
+  card.querySelector('.member-card-front').setAttribute('aria-hidden', String(flipped));
+  card.querySelector('.member-card-back').setAttribute('aria-hidden', String(!flipped));
+  card.querySelectorAll('[data-flip-card]').forEach((control) => control.setAttribute('aria-expanded', String(flipped)));
+};
 document.addEventListener('click', (event) => {
   const button = event.target.closest('[data-flip-card]');
   if (!button) return;
-  const card = button.closest('.member-flip-card');
-  if (!card) return;
-  const flipped = card.classList.toggle('is-flipped');
-  card.querySelector('.member-card-front').inert = flipped;
-  card.querySelector('.member-card-back').inert = !flipped;
-  card.querySelectorAll('[data-flip-card]').forEach((control) => control.setAttribute('aria-expanded', String(flipped)));
+  toggleMemberCard(button);
 });
-document.querySelectorAll('.member-card-back').forEach((face) => { face.inert = true; });
+document.addEventListener('keydown', (event) => {
+  if (event.key !== 'Enter' && event.key !== ' ') return;
+  const control = event.target.closest('[data-flip-card]');
+  if (!control) return;
+  if (control.tagName === 'BUTTON') return;
+  event.preventDefault();
+  toggleMemberCard(control);
+});
+document.querySelectorAll('.member-card-back').forEach((face) => { face.setAttribute('aria-hidden', 'true'); });
 
 document.querySelectorAll('.search').forEach((form) => form.addEventListener('submit', (event) => {
   event.preventDefault();
