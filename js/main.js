@@ -319,7 +319,7 @@ if (membersPage) {
       bindJsonText(gallery.querySelector('.section-tag'), galleryContent.eyebrow, galleryContent.eyebrow_hi); bindJsonText(gallery.querySelector('h2'), galleryContent.title, galleryContent.title_hi); bindJsonText(gallery.querySelector('.gallery-heading>p:last-child'), galleryContent.description, galleryContent.description_hi);
       const buildGallerySet = (items, duplicate = false) => {
         const set = document.createElement('div'); set.className = 'members-set'; if (duplicate) set.setAttribute('aria-hidden', 'true');
-        const appendFigure = (item, parent) => { const figure = document.createElement('figure'); figure.className = `member-photo ${item.orientation}`; figure.innerHTML = `<img src="${assetRoot}${item.image}" alt="${duplicate ? '' : item.alt}"><figcaption><strong></strong><span></span></figcaption>`; bindJsonText(figure.querySelector('strong'), item.title, item.title_hi); bindJsonText(figure.querySelector('figcaption span'), item.caption, item.caption_hi); parent.append(figure); };
+        const appendFigure = (item, parent) => { const figure = document.createElement('figure'); figure.className = `member-photo ${item.orientation}`; figure.innerHTML = `<a class="member-photo-link" href="${assetRoot}${item.image}" target="_blank" rel="noopener"${duplicate ? ' tabindex="-1"' : ''}><img src="${assetRoot}${item.image}" alt="${duplicate ? '' : item.alt}"><figcaption><strong></strong><span></span></figcaption></a>`; bindJsonText(figure.querySelector('strong'), item.title, item.title_hi); bindJsonText(figure.querySelector('figcaption span'), item.caption, item.caption_hi); parent.append(figure); };
         items.filter((item) => item.orientation !== 'landscape').forEach((item) => appendFigure(item, set));
         const landscapes = items.filter((item) => item.orientation === 'landscape');
         for (let index = 0; index < landscapes.length; index += 2) { const pair = document.createElement('div'); pair.className = 'member-photo-pair'; landscapes.slice(index, index + 2).forEach((item) => appendFigure(item, pair)); set.append(pair); }
@@ -352,6 +352,58 @@ if (membersPage) {
     })
     .catch((error) => console.error(error));
 }
+
+const membersGalleryRestartTimers = new WeakMap();
+const clearMembersGalleryClickState = (marquee) => {
+  clearTimeout(membersGalleryRestartTimers.get(marquee));
+  membersGalleryRestartTimers.delete(marquee);
+  marquee.classList.remove('is-click-paused', 'is-click-resumed');
+};
+const restartMembersGalleryAfterInteraction = (marquee) => {
+  clearTimeout(membersGalleryRestartTimers.get(marquee));
+  marquee.classList.remove('is-click-resumed');
+  marquee.classList.add('is-click-paused');
+  const timer = setTimeout(() => {
+    marquee.classList.remove('is-click-paused');
+    marquee.classList.add('is-click-resumed');
+    if (!marquee.matches(':hover, :focus-within')) {
+      clearMembersGalleryClickState(marquee);
+      return;
+    }
+    membersGalleryRestartTimers.delete(marquee);
+  }, 1000);
+  membersGalleryRestartTimers.set(marquee, timer);
+};
+document.addEventListener('pointerover', (event) => {
+  const marquee = event.target.closest('.members-marquee');
+  if (!marquee || marquee.contains(event.relatedTarget)) return;
+  restartMembersGalleryAfterInteraction(marquee);
+});
+document.addEventListener('click', (event) => {
+  const imageLink = event.target.closest('.member-photo-link');
+  const fallbackImage = imageLink ? null : event.target.closest('.member-photo img');
+  if (!imageLink && !fallbackImage) return;
+  const marquee = event.target.closest('.members-marquee');
+  if (marquee) restartMembersGalleryAfterInteraction(marquee);
+  if (!imageLink && fallbackImage) window.open(fallbackImage.currentSrc || fallbackImage.src, '_blank', 'noopener');
+});
+document.addEventListener('focusin', (event) => {
+  const marquee = event.target.closest('.members-marquee');
+  if (!marquee) return;
+  restartMembersGalleryAfterInteraction(marquee);
+});
+document.addEventListener('pointerout', (event) => {
+  const marquee = event.target.closest('.members-marquee');
+  if (!marquee || marquee.contains(event.relatedTarget)) return;
+  if (marquee.classList.contains('is-click-paused')) return;
+  clearMembersGalleryClickState(marquee);
+});
+document.addEventListener('focusout', (event) => {
+  const marquee = event.target.closest('.members-marquee');
+  if (!marquee || marquee.contains(event.relatedTarget)) return;
+  if (marquee.classList.contains('is-click-paused')) return;
+  clearMembersGalleryClickState(marquee);
+});
 
 document.querySelectorAll('.contact-form').forEach((form) => form.addEventListener('submit', (event) => {
   event.preventDefault();

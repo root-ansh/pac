@@ -215,6 +215,7 @@
 .member-photo{position:relative;overflow:hidden;margin:0;border:1px solid #d9dfdb;border-radius:12px;background:white;box-shadow:0 10px 28px rgba(18,48,34,.11);isolation:isolate}
 .member-photo.portrait{flex:none;width:210px;height:var(--gallery-height)}
 .member-photo.landscape{width:100%;height:100%}
+.member-photo-link{display:block;position:relative;width:100%;height:100%;color:inherit;text-decoration:none;cursor:zoom-in}
 .member-photo img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .6s cubic-bezier(.2,.75,.25,1),filter .4s ease}
 .member-photo figcaption{position:absolute;left:0;right:0;bottom:0;padding:45px 18px 16px;background:linear-gradient(transparent,rgba(5,26,17,.9));color:white;transform:translateY(18px);transition:transform .35s ease}
 .member-photo figcaption strong,.member-photo figcaption span{display:block}
@@ -224,6 +225,8 @@
 .member-photo:hover figcaption,.member-photo:focus-within figcaption{transform:translateY(0)}
 .member-photo:hover figcaption span,.member-photo:focus-within figcaption span{opacity:1}
 .members-marquee:hover .members-track,.members-marquee:focus-within .members-track{animation-play-state:paused}
+.members-marquee.is-click-paused .members-track{animation-play-state:paused}
+.members-marquee.is-click-resumed .members-track{animation-play-state:running}
 @keyframes members-scroll{to{transform:translateX(-50%)}}
 
 .page-banner.generated-hero{min-height:360px;display:flex;align-items:center;background-position:center;background-size:cover;position:relative;isolation:isolate}
