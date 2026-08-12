@@ -210,7 +210,7 @@
 .gallery-heading>p:last-child{color:var(--muted);margin:10px 0 0}
 .members-marquee-stack{display:grid;gap:16px}
 .members-marquee{--gallery-height:461px;--gallery-gap:16px;width:100%;overflow:hidden;padding:6px 0;mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent)}
-.members-track{display:flex;width:max-content;animation:members-scroll 60s linear infinite;will-change:transform}
+.members-track{display:flex;width:max-content;animation:members-scroll 80s linear infinite;will-change:transform}
 .gallery-marquee-row:nth-child(2) .members-track{animation-direction:reverse;animation-duration:68s}
 .members-set{display:flex;flex:none;gap:var(--gallery-gap);padding-right:var(--gallery-gap)}
 .member-photo-pair{display:grid;flex:none;width:440px;height:var(--gallery-height);grid-template-rows:repeat(2,minmax(0,1fr));gap:var(--gallery-gap)}
